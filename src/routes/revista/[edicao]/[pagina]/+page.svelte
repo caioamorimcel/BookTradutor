@@ -5,6 +5,7 @@
 	import { type Balao } from '$lib/types/typeBalao';
 	import { tick } from 'svelte';
 	import { slide } from 'svelte/transition';
+	import PalavraPorPalavra from './PalavraPorPalavra.svelte';
 
 	let { data } = $props();
 
@@ -15,7 +16,9 @@
 	let estadoIdioma = $state<'ptbr' | 'en'>('ptbr');
 
 	let popupVisivel = $state(false);
-	let popupTexto = $state('');
+	let stringTraducao = $state('');
+	let arrayOriginal = $state<string[]>([]);
+	let arrayTraducao = $state<string[]>([]);
 	let popupX = $state(0);
 	let popupY = $state(0);
 	let popupBalãoIndex = $state<number | null>(null);
@@ -36,7 +39,19 @@
 
 	// Fechar popup ao clicar fora
 	$effect(() => {
-		const fechar = () => ((popupVisivel = false), (popupBalãoIndex = null));
+		const fechar = (event: MouseEvent) => {
+			const target = event.target as HTMLElement;
+
+			// Ignora clique dentro do SweetAlert
+			if (target.closest('.swal2-container')) return;
+
+			// Ignora clique dentro do popup interno
+			if (target.closest('.popup-interno')) return;
+
+			popupVisivel = false;
+			popupBalãoIndex = null;
+		};
+
 		window.addEventListener('click', fechar);
 		return () => window.removeEventListener('click', fechar);
 	});
@@ -69,7 +84,9 @@
 		popupVisivel = false;
 		await tick(); // espera o DOM atualizar e aplicar out:slide
 
-		popupTexto = balao[estadoIdioma];
+		stringTraducao = balao[estadoIdioma].join(' ');
+		arrayOriginal = balao['en'];
+		arrayTraducao = balao[`${estadoIdioma}pp`];
 		popupX = x;
 		popupY = y;
 		popupBalãoIndex = index;
@@ -105,6 +122,7 @@
 		}}
 		class="max-w-20 rounded border p-2"
 	>
+		<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars-->
 		{#each Array.from({ length: data.totalPaginas }) as _, p (p)}
 			<option value={p + 1}>{p + 1} / {data.totalPaginas}</option>
 		{/each}
@@ -160,13 +178,13 @@
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
-				class="relative rounded-2xl bg-black p-4 text-white shadow-xl"
+				class="popup-interno relative rounded-2xl bg-black p-4 text-white shadow-xl"
 				style="font-size: {popupFontSize}px;"
 				onclick={(event) => {
 					event.stopPropagation(); // ⚡ impede o fechamento do popup
 				}}
 			>
-				{popupTexto}
+				{stringTraducao}
 
 				<div class="mt-2 flex justify-between gap-1">
 					<button
@@ -175,7 +193,7 @@
 					>
 						Fechar
 					</button>
-
+					<PalavraPorPalavra original={arrayOriginal} traducao={arrayTraducao} />
 					<div class="flex gap-1">
 						<button onclick={diminuirFonte} class="rounded bg-gray-700 px-2 py-1">-</button>
 						<button onclick={aumentarFonte} class="rounded bg-gray-700 px-2 py-1">+</button>
