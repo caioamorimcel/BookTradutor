@@ -2,35 +2,36 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
+	import IconeFechar from '$lib/icones/iconeFechar.svelte';
 	import { type Balao } from '$lib/types/typeBalao';
 	import { tick } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import PalavraPorPalavra from './PalavraPorPalavra.svelte';
+	import SelecaoDeVoz from './SelecaoDeVoz.svelte';
+	import TextToSpeech from './TextToSpeech.svelte';
 
 	let { data } = $props();
 
 	let balaoJson = $state<Balao[]>([]);
-	let imgElement = $state<HTMLImageElement>();
-	let larguraOriginal = $state(0);
-	let alturaOriginal = $state(0);
-	let estadoIdioma = $state<'ptbr' | 'en'>('ptbr');
+	let elementoImagem = $state<HTMLImageElement>();
+	let numberLarguraOriginal = $state(0);
+	let numberAlturaOriginal = $state(0);
+	let stringIdioma = $state<'ptbr' | 'en'>('ptbr');
+	let stringVoz = $state('');
 
-	let popupVisivel = $state(false);
+	let booleanPopupVisivel = $state(false);
 	let stringTraducao = $state('');
 	let arrayOriginal = $state<string[]>([]);
 	let arrayTraducao = $state<string[]>([]);
-	let popupX = $state(0);
-	let popupY = $state(0);
-	let popupBalãoIndex = $state<number | null>(null);
+	let numberPopupX = $state(0);
+	let numberPopupY = $state(0);
+	let numberIndiceDoBalao = $state<number | null>(null);
 
-	let paginaAtual = $derived(parseInt(page.params.pagina ?? '1'));
-
-	let audio: HTMLAudioElement;
+	let numberPaginaAtual = $derived(parseInt(page.params.pagina ?? '1'));
 
 	const asyncEffect = async () => {
 		const resultado = await fetch(`/${page.params.edicao}/json/${page.params.pagina}.json`);
 		balaoJson = await resultado.json();
-		audio = new Audio('/audio/musica_teste.mp3');
 	};
 
 	$effect(() => {
@@ -48,8 +49,8 @@
 			// Ignora clique dentro do popup interno
 			if (target.closest('.popup-interno')) return;
 
-			popupVisivel = false;
-			popupBalãoIndex = null;
+			booleanPopupVisivel = false;
+			numberIndiceDoBalao = null;
 		};
 
 		window.addEventListener('click', fechar);
@@ -60,9 +61,9 @@
 		event.stopPropagation();
 
 		// Toggle: se clicar no mesmo balão fecha
-		if (popupVisivel && popupBalãoIndex === index) {
-			popupVisivel = false;
-			popupBalãoIndex = null;
+		if (booleanPopupVisivel && numberIndiceDoBalao === index) {
+			booleanPopupVisivel = false;
+			numberIndiceDoBalao = null;
 			return;
 		}
 
@@ -81,16 +82,16 @@
 		if (x < 10) x = 10;
 
 		// Força transição: fecha antes de abrir novo popup
-		popupVisivel = false;
+		booleanPopupVisivel = false;
 		await tick(); // espera o DOM atualizar e aplicar out:slide
 
-		stringTraducao = balao[estadoIdioma].join(' ');
+		stringTraducao = balao[stringIdioma].join(' ');
 		arrayOriginal = balao['en'];
-		arrayTraducao = balao[`${estadoIdioma}pp`];
-		popupX = x;
-		popupY = y;
-		popupBalãoIndex = index;
-		popupVisivel = true;
+		arrayTraducao = balao[`${stringIdioma}pp`];
+		numberPopupX = x;
+		numberPopupY = y;
+		numberIndiceDoBalao = index;
+		booleanPopupVisivel = true;
 	}
 
 	let popupFontSize = $state(14); // tamanho inicial da fonte do popup
@@ -107,15 +108,16 @@
 <div class="mt-2 mb-2 flex items-center justify-center gap-3">
 	<button
 		class="classButton disabled:cursor-not-allowed disabled:opacity-50"
-		disabled={paginaAtual <= 1}
+		disabled={numberPaginaAtual <= 1}
 		onclick={() =>
-			paginaAtual > 1 && goto(resolve(`/revista/${page.params.edicao}/${paginaAtual - 1}`))}
+			numberPaginaAtual > 1 &&
+			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual - 1}`))}
 	>
 		VOLTAR
 	</button>
 
 	<select
-		value={paginaAtual}
+		value={numberPaginaAtual}
 		onchange={(event) => {
 			const valorSelecionado = (event.currentTarget as HTMLSelectElement).value;
 			goto(resolve(`/revista/${page.params.edicao}/${valorSelecionado}`));
@@ -130,10 +132,10 @@
 
 	<button
 		class="classButton disabled:cursor-not-allowed disabled:opacity-50"
-		disabled={paginaAtual >= data.totalPaginas}
+		disabled={numberPaginaAtual >= data.totalPaginas}
 		onclick={() =>
-			paginaAtual < data.totalPaginas &&
-			goto(resolve(`/revista/${page.params.edicao}/${paginaAtual + 1}`))}
+			numberPaginaAtual < data.totalPaginas &&
+			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual + 1}`))}
 	>
 		AVANÇAR
 	</button>
@@ -141,14 +143,14 @@
 
 <div class="relative mx-auto w-full">
 	<img
-		bind:this={imgElement}
+		bind:this={elementoImagem}
 		src={`/${page.params.edicao}/${page.params.pagina}.jpg`}
 		alt="Quadrinho"
 		class="mb-4 block w-full"
 		onload={() => {
-			if (imgElement) {
-				larguraOriginal = imgElement.naturalWidth;
-				alturaOriginal = imgElement.naturalHeight;
+			if (elementoImagem) {
+				numberLarguraOriginal = elementoImagem.naturalWidth;
+				numberAlturaOriginal = elementoImagem.naturalHeight;
 			}
 		}}
 	/>
@@ -159,19 +161,19 @@
 			type="button"
 			class="absolute cursor-pointer bg-blue-500/30 p-0 lg:bg-transparent lg:hover:bg-red-500/20"
 			style="
-        left: {(balao.x1 / larguraOriginal) * 100}%;
-        top: {(balao.y1 / alturaOriginal) * 100}%;
-        width: {((balao.x2 - balao.x1) / larguraOriginal) * 100}%;
-        height: {((balao.y2 - balao.y1) / alturaOriginal) * 100}%;
+        left: {(balao.x1 / numberLarguraOriginal) * 100}%;
+        top: {(balao.y1 / numberAlturaOriginal) * 100}%;
+        width: {((balao.x2 - balao.x1) / numberLarguraOriginal) * 100}%;
+        height: {((balao.y2 - balao.y1) / numberAlturaOriginal) * 100}%;
       "
 			onclick={(e) => abrirPopup(e, balao, i)}
 		></button>
 	{/each}
 
-	{#if popupVisivel}
+	{#if booleanPopupVisivel}
 		<div
 			class="absolute z-50 w-64"
-			style="left: {popupX}px; top: {popupY}px;"
+			style="left: {numberPopupX}px; top: {numberPopupY}px;"
 			in:slide={{ duration: 500 }}
 			out:slide={{ duration: 150 }}
 		>
@@ -188,15 +190,22 @@
 
 				<div class="mt-2 flex justify-between gap-1">
 					<button
-						onclick={() => ((popupVisivel = false), (popupBalãoIndex = null))}
-						class="rounded bg-blue-500 px-2 py-1"
+						onclick={() => ((booleanPopupVisivel = false), (numberIndiceDoBalao = null))}
+						class="cursor-pointer rounded bg-blue-500 px-2 py-1"
 					>
-						Fechar
+						<IconeFechar />
 					</button>
 					<PalavraPorPalavra original={arrayOriginal} traducao={arrayTraducao} />
+
+					<TextToSpeech voz={stringVoz} texto={arrayOriginal.join(' ')} />
+
 					<div class="flex gap-1">
-						<button onclick={diminuirFonte} class="rounded bg-gray-700 px-2 py-1">-</button>
-						<button onclick={aumentarFonte} class="rounded bg-gray-700 px-2 py-1">+</button>
+						<button onclick={diminuirFonte} class="cursor-pointer rounded bg-gray-700 px-2 py-1"
+							>-</button
+						>
+						<button onclick={aumentarFonte} class="cursor-pointer rounded bg-gray-700 px-2 py-1"
+							>+</button
+						>
 					</div>
 				</div>
 
@@ -206,9 +215,15 @@
 	{/if}
 </div>
 
-<div class="mx-auto mb-4 w-full max-w-150">
-	<select bind:value={estadoIdioma} class="mx-auto block w-full max-w-50 rounded border p-2">
-		<option value="ptbr">Português</option>
-		<option value="en">English</option>
-	</select>
+<div class="flex justify-center">
+	<fieldset class="daisy-fieldset w-xs rounded-box border border-base-300 bg-base-200 p-4">
+		<legend class="daisy-fieldset-legend">CONFIGURAÇÕES:</legend>
+		<p class="daisy-label">IDIOMA:</p>
+		<select bind:value={stringIdioma} class="daisy-select">
+			<option value="ptbr">Português</option>
+			<option value="en">English</option>
+		</select>
+		<p class="daisy-label">VOZ:</p>
+		<SelecaoDeVoz bind:voz={stringVoz} />
+	</fieldset>
 </div>
