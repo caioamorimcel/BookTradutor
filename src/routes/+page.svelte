@@ -1,65 +1,25 @@
 <script>
-	import Swal from 'sweetalert2';
+	import { getVoices, speak } from '../lib/funcaoTextToSpeech';
 
-	function abrirSweetAlert() {
-		Swal.fire({
-			title: 'Tooltip sem corte',
-			html: `
-        Aqui está uma palavra 
-        <span class="tooltip-container">
-          importante
-          <span class="tooltip-text">
-            Agora não será cortado 😎
-          </span>
-        </span>
-      `,
-			customClass: {
-				popup: 'meu-swal'
-			}
-		});
-	}
+	let text = $state(
+		`AMAZING! LOOK AT THEM FLEE THE FLEAS... RIGHT INTO THEIR CAGES! DONALD, YOU'RE A MARVEL!`
+	);
+	let selectedVoice = $state('');
+
+	let voices = $derived(
+		getVoices().filter((current) => {
+			return current.lang.slice(0, 2) === 'en';
+		})
+	);
 </script>
 
-<button onclick={abrirSweetAlert}> Abrir SweetAlert </button>
+<select bind:value={selectedVoice}>
+	<option value="">Padrão</option>
+	{#each voices as voice, i (i)}
+		<option value={voice.name}>
+			{voice.name} ({voice.lang})
+		</option>
+	{/each}
+</select>
 
-<style>
-	/* 🔥 ESSENCIAL */
-	:global(.meu-swal) {
-		overflow: visible !important;
-	}
-
-	:global(.meu-swal .swal2-html-container) {
-		overflow: visible !important;
-	}
-
-	:global(.tooltip-container) {
-		position: relative;
-		cursor: pointer;
-		color: #0d6efd;
-		font-weight: bold;
-	}
-
-	:global(.tooltip-text) {
-		visibility: hidden;
-		opacity: 0;
-		transition: opacity 0.2s ease;
-
-		position: absolute;
-		bottom: 125%;
-		left: 50%;
-		transform: translateX(-50%);
-
-		background: #333;
-		color: #fff;
-		padding: 6px 10px;
-		border-radius: 6px;
-		font-size: 13px;
-		white-space: nowrap;
-		z-index: 1000;
-	}
-
-	:global(.tooltip-container:hover .tooltip-text) {
-		visibility: visible;
-		opacity: 1;
-	}
-</style>
+<button onclick={() => speak(text, { voiceName: selectedVoice })}> Falar </button>

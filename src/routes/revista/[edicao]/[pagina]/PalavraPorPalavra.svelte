@@ -1,4 +1,5 @@
 <script lang="ts">
+	import IconePalavraPorPalavra from '$lib/icones/iconePalavraPorPalavra.svelte';
 	import Swal from 'sweetalert2';
 
 	let {
@@ -38,7 +39,9 @@
 	}
 </script>
 
-<button onclick={abrirSweetAlert}> Abrir SweetAlert </button>
+<button onclick={abrirSweetAlert} class="cursor-pointer rounded bg-gray-700 px-2 py-1">
+	<IconePalavraPorPalavra />
+</button>
 
 <style>
 	/* 🔥 ESSENCIAL */
