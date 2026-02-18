@@ -5,7 +5,9 @@
 	import IconeFechar from '$lib/icones/iconeFechar.svelte';
 	import { type Balao } from '$lib/types/typeBalao';
 	import { tick } from 'svelte';
-	import { slide } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
+	import * as arrastar from './arrastar';
+	import { funcaoTeclas } from './funcaoTeclas.js';
 	import PalavraPorPalavra from './PalavraPorPalavra.svelte';
 	import SelecaoDeVoz from './SelecaoDeVoz.svelte';
 	import TextToSpeech from './TextToSpeech.svelte';
@@ -18,7 +20,6 @@
 	let numberAlturaOriginal = $state(0);
 	let stringIdioma = $state<'ptbr' | 'en'>('ptbr');
 	let stringVoz = $state('');
-
 	let booleanPopupVisivel = $state(false);
 	let stringTraducao = $state('');
 	let arrayOriginal = $state<string[]>([]);
@@ -28,6 +29,13 @@
 	let numberIndiceDoBalao = $state<number | null>(null);
 
 	let numberPaginaAtual = $derived(parseInt(page.params.pagina ?? '1'));
+	const stateTransitionIn = $derived(
+		page.url.searchParams.get('direction') === 'next' ? '100%' : '-100%'
+	);
+
+	const stateTransitionOut = $derived(
+		page.url.searchParams.get('direction') === 'next' ? '-100%' : '100%'
+	);
 
 	const asyncEffect = async () => {
 		const resultado = await fetch(`/${page.params.edicao}/json/${page.params.pagina}.json`);
@@ -103,7 +111,18 @@
 	function diminuirFonte() {
 		if (popupFontSize > 10) popupFontSize -= 2; // limite mínimo 10px
 	}
+
+	const transitionIn = (node: Element, args: { parType: 'transitionFade' | 'transitionFly' }) =>
+		args.parType === 'transitionFade'
+			? fade(node, { duration: 500, delay: 550 })
+			: fly(node, { duration: 500, delay: 550, x: stateTransitionIn });
+	const transitionOut = (node: Element, args: { parType: 'transitionFade' | 'transitionFly' }) =>
+		args.parType === 'transitionFade'
+			? fade(node, { duration: 500 })
+			: fly(node, { duration: 500, x: stateTransitionOut });
 </script>
+
+<svelte:window on:keydown={funcaoTeclas} />
 
 <div class="mt-2 mb-2 flex items-center justify-center gap-3">
 	<button
@@ -111,7 +130,7 @@
 		disabled={numberPaginaAtual <= 1}
 		onclick={() =>
 			numberPaginaAtual > 1 &&
-			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual - 1}`))}
+			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual - 1}?direction=previous`))}
 	>
 		VOLTAR
 	</button>
@@ -135,25 +154,37 @@
 		disabled={numberPaginaAtual >= data.totalPaginas}
 		onclick={() =>
 			numberPaginaAtual < data.totalPaginas &&
-			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual + 1}`))}
+			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual + 1}?direction=next`))}
 	>
 		AVANÇAR
 	</button>
 </div>
 
 <div class="relative mx-auto w-full">
-	<img
-		bind:this={elementoImagem}
-		src={`/${page.params.edicao}/${page.params.pagina}.jpg`}
-		alt="Quadrinho"
-		class="mb-4 block w-full"
-		onload={() => {
-			if (elementoImagem) {
-				numberLarguraOriginal = elementoImagem.naturalWidth;
-				numberAlturaOriginal = elementoImagem.naturalHeight;
-			}
-		}}
-	/>
+	{#key page.url.pathname}
+		<img
+			in:transitionIn|global={{
+				parType:
+					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly'
+			}}
+			out:transitionOut={{
+				parType:
+					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly'
+			}}
+			ontouchstart={arrastar.handleTouchStart}
+			ontouchend={arrastar.handleTouchEnd}
+			bind:this={elementoImagem}
+			src={`/${page.params.edicao}/${page.params.pagina}.jpg`}
+			alt="Quadrinho"
+			class="mb-4 block w-full"
+			onload={() => {
+				if (elementoImagem) {
+					numberLarguraOriginal = elementoImagem.naturalWidth;
+					numberAlturaOriginal = elementoImagem.naturalHeight;
+				}
+			}}
+		/>
+	{/key}
 
 	{#each balaoJson as balao, i (i)}
 		<!-- svelte-ignore a11y_consider_explicit_label -->
@@ -227,3 +258,4 @@
 		<SelecaoDeVoz bind:voz={stringVoz} />
 	</fieldset>
 </div>
+{data.totalPaginas}
