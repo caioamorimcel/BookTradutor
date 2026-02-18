@@ -258,4 +258,3 @@
 		<SelecaoDeVoz bind:voz={stringVoz} />
 	</fieldset>
 </div>
-{data.totalPaginas}
