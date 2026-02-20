@@ -1,8 +1,6 @@
 <script lang="ts">
 	import IconePalavraPorPalavra from '$lib/icones/iconePalavraPorPalavra.svelte';
-	import { mount, unmount } from 'svelte';
 	import Swal from 'sweetalert2';
-	import Modal from './Modal.svelte';
 
 	let {
 		original,
@@ -14,18 +12,25 @@
 		traducao: string[];
 	} = $props();
 
+	let aa = $derived(
+		original
+			.map((texto, contador) => {
+				return `
+			    <span class="tooltip-container">
+					${texto}
+	  				<div class="tooltip-text">
+	    				${traducaopp[contador]}
+	  				</div>
+				</span>
+			`;
+			})
+			.join(' ')
+	);
+
 	function abrirSweetAlert() {
-		const container = document.createElement('div');
-
-		// 2. Monta o componente passando as props necessárias
-		const app = mount(Modal, {
-			target: container,
-			props: { traducaopp, original, traducao }
-		});
-
 		Swal.fire({
 			title: 'TRADUÇÃO PALAVRA POR PALAVRA',
-			html: container,
+			html: `${aa} <br/><br/> ${traducao.join(' ')}`,
 			customClass: {
 				popup: 'meu-swal',
 				title: 'meu-titulo-pequeno'
@@ -67,7 +72,7 @@
 		transition: opacity 0.2s ease;
 
 		position: absolute;
-		bottom: 140%;
+		bottom: 100%;
 		left: 50%;
 		transform: translateX(-50%);
 

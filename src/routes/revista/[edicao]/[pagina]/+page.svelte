@@ -23,6 +23,7 @@
 	let booleanPopupVisivel = $state(false);
 	let stringTraducao = $state('');
 	let arrayOriginal = $state<string[]>([]);
+	let arrayTraducaopp = $state<string[]>([]);
 	let arrayTraducao = $state<string[]>([]);
 	let numberPopupX = $state(0);
 	let numberPopupY = $state(0);
@@ -95,7 +96,8 @@
 
 		stringTraducao = balao[stringIdioma].join(' ');
 		arrayOriginal = balao['en'];
-		arrayTraducao = balao[`${stringIdioma}pp`];
+		arrayTraducaopp = balao[`${stringIdioma}pp`];
+		arrayTraducao = balao[`${stringIdioma}`];
 		numberPopupX = x;
 		numberPopupY = y;
 		numberIndiceDoBalao = index;
@@ -226,7 +228,11 @@
 					>
 						<IconeFechar />
 					</button>
-					<PalavraPorPalavra original={arrayOriginal} traducao={arrayTraducao} />
+					<PalavraPorPalavra
+						original={arrayOriginal}
+						traducao={arrayTraducao}
+						traducaopp={arrayTraducaopp}
+					/>
 
 					<TextToSpeech voz={stringVoz} texto={arrayOriginal.join(' ')} />
 
