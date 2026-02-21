@@ -44,15 +44,12 @@
 </button>
 
 <style>
-	/* 🔥 ESSENCIAL */
 	:global(.meu-swal) {
 		overflow: visible !important;
 	}
-
 	:global(.meu-swal .swal2-html-container) {
 		overflow: visible !important;
 	}
-
 	:global(.tooltip-container) {
 		position: relative;
 		cursor: pointer;
@@ -60,12 +57,10 @@
 		background-color: lightcyan;
 		font-weight: bold;
 		margin: 0px 5px;
-		display: inline-block; /* importante para absolute funcionar corretamente */
+		display: inline-block;
 	}
-
-	/* Título do SweetAlert */
 	:global(.meu-titulo-pequeno) {
-		font-size: 26px; /* ajuste o tamanho que quiser */
-		font-weight: normal; /* opcional */
+		font-size: 26px;
+		font-weight: normal;
 	}
 </style>
