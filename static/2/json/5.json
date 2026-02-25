@@ -1,47 +1,47 @@
 [
   {
-    "x1": 86,
-    "y1": 1080,
-    "x2": 754,
-    "y2": 1330,
+    "x1": 25,
+    "y1": 948,
+    "x2": 696,
+    "y2": 1199,
     "ptbr": ["INCRÍVEL!", "OLHE", "PARA", "ELES", "FUGINDO", "DAS", "PULGAS...", "DIRETO", "PARA", "SUAS", "GAIOLAS!", "DONALD,", "VOCÊ", "É", "UMA", "MARAVILHA!"],
-    "ptbrpp": ["INCRÍVEL!", "OLHE", "PARA", "*ELES (CONTRAÇÃO DE THEM)", "FUGINDO", "DAS", "PULGAS...", "DIRETO", "PARA", "SUAS", "GAIOLAS!", "DONALD,", "VOCÊ É", "UMA", "MARAVILHA!"],
+    "ptbrpp": ["INCRÍVEL!", "OLHE", "PARA", "*ELES (CONTRAÇÃO DE THEM)", "FUGIR", "DAS", "PULGAS...", "DIRETO", "PARA", "SUAS", "GAIOLAS!", "DONALD,", "VOCÊ É", "UMA", "MARAVILHA!"],
     "en": ["AMAZING!", "LOOK", "AT", "'EM", "FLEE", "THE", "FLEAS...", "RIGHT", "INTO", "THEIR", "CAGES!", "DONALD,", "YOU'RE", "A", "MARVEL!"]
   },
   {
     "x1": 826,
-    "y1": 1804,
-    "x2": 1197,
-    "y2": 1964,
+    "y1": 1779,
+    "x2": 1674,
+    "y2": 1830,
     "ptbr": ["ESSE É", "MEU", "TRABALHO!"],
     "ptbrpp": ["ESSE É", "MEU", "TRABALHO!"],
     "en": ["THAT'S", "MY", "JOB!"]
   },
   {
-    "x1": 81,
-    "y1": 2016,
-    "x2": 473,
-    "y2": 2271,
+    "x1": 21,
+    "y1": 1882,
+    "x2": 413,
+    "y2": 2139,
     "ptbr": ["MAS...", "COMO", "VOCÊ", "FAZ", "ISSO?", "É", "SÓ", "UM", "MONTE", "DE", "PULGAS..."],
-    "ptbrpp": ["MAS...", "COMO", "VOCÊ", "FAZ", "ISSO?", "É", "SÓ", "UM", "MONTE", "DE", "PULGAS..."],
+    "ptbrpp": ["MAS...", "COMO", "*usado como um verbo auxiliar para formular perguntas(quando não é usado para perguntas, significa fazer)", "VOCÊ", "FAZ", "ISSO?", "APENAS", "UM", "MONTE", "DE", "PULGAS..."],
     "en": ["BUT...", "HOW", "DO", "YOU", "DO", "IT?", "JUST", "A", "BUNCH", "OF", "FLEAS..."]
   },
   {
-    "x1": 481,
-    "y1": 2015,
-    "x2": 1292,
-    "y2": 2212,
-    "ptbr": ["ESSE", "É", "O", "SEGREDO!", "QUALQUER", "COISA", "PODE", "SER", "UMA", "FERRAMENTA!", "TUDO", "O", "QUE", "PRECISA", "É", "INTELIGÊNCIA!"],
-    "ptbrpp": ["ESSE", "É", "O", "SEGREDO!", "QUALQUER", "COISA", "PODE", "SER", "UMA", "FERRAMENTA!", "TUDO", "O", "QUE", "PRECISA", "É", "INTELIGÊNCIA!"],
+    "x1": 423,
+    "y1": 1883,
+    "x2": 1233,
+    "y2": 2087,
+    "ptbr": ["ESSE", "É", "O", "TRUQUE!", "QUALQUER", "COISA", "PODE", "SER", "UMA", "FERRAMENTA!", "TUDO", "O", "QUE", "PRECISA", "É", "INTELIGÊNCIA!"],
+    "ptbrpp": ["ESSE É", "O", "TRUQUE!", "QUALQUER COISA", "PODE", "SER", "UMA", "FERRAMENTA!", "TUDO", "ISSO", "REQUER", "É", "INTELIGÊNCIA(CERÉBRO)!"],
     "en": ["THAT'S", "THE", "TRICK!", "ANYTHING", "CAN", "BE", "A", "TOOL!", "ALL", "IT", "TAKES", "IS", "BRAINS!"]
   },
   {
-    "x1": 1207,
-    "y1": 2595,
-    "x2": 1757,
-    "y2": 2858,
-    "ptbr": ["NOW", "GET", "ME", "SOME", "REALLY", "STRONG", "WIRE!", "LOTS", "OF", "IT!", "QUICKLY!"],
-    "ptbrpp": ["NOW", "GET", "ME", "SOME", "REALLY", "STRONG", "WIRE!", "LOTS", "OF", "IT!", "QUICKLY!"],
-    "en": ["AGORA", "ME", "CONSIGA", "ALGUM", "FIO", "REALMENTE", "FORTE!", "MUITO", "DELE!", "RÁPIDO!"]
+    "x1": 1147,
+    "y1": 2463,
+    "x2": 1700,
+    "y2": 2726,
+    "ptbr": ["AGORA", "ME", "CONSIGA", "ALGUM", "FIO", "REALMENTE", "FORTE!", "MUITO", "DELE!", "DEPRESSA!"],
+    "ptbrpp": ["AGORA", "PEGUE", "MEU", "ALGUM", "REALMENTE", "FORTE", "FIO", "MUITO ISSO!", "DEPRESSA!"],
+    "en":  ["NOW", "GET", "ME", "SOME", "REALLY", "STRONG", "WIRE!", "LOTS OF IT!", "QUICKLY!"]
   }
 ]

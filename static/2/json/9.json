@@ -1,0 +1,86 @@
+[
+  {
+    "x1": 36,
+    "y1": 59,
+    "x2": 259,
+    "y2": 201,
+    "ptbr": ["O QUE?!?"],
+    "ptbrpp": ["O QUE?!?"],
+    "en": ["WHAT?!?"]
+},
+{
+	"x1": 281,
+    "y1": 55,
+    "x2": 750,
+    "y2": 292,
+    "ptbr": ["VOCÊ", "ESTÁ", "SEMPRE", "NOS", "ORDENANDO", "PULAR", "QUANDO", "VOCÊ", "ASSOVIA!", "E", "AS", "NOSSAS", "NECESSIDADES?"],
+	"ptbrpp": ["VOCÊ ESTÁ", "SEMPRE", "ORDENANDO", "*É UM PRONOME OBJETO QUE SIGNIFICA NOS, A GENTE OU NÓS (QUANDO RECEBE A AÇÃO)", "PARA", "PULAR", "QUANDO", "VOCÊ", "ASSOVIA!", "E SOBRE", "NOSSAS", "NECESSIDADES?"],
+    "en": ["YOU'RE", "ALWAYS", "ORDERING", "US", "TO", "JUMP", "WHEN", "YOU", "WHISTLE!", "WHAT ABOUT", "OUR", "NEEDS?"]
+  },
+  {
+	"x1": 762,
+    "y1": 53,
+    "x2": 1193,
+    "y2": 181,
+    "ptbr": ["É!", "NÓS", "AINDA", "ESTAMOS", "OCUPADOS", "LIMPANDO", "ESSA", "BAGUNÇA,", "LEMBRA?"],
+	"ptbrpp": ["SIM!", "NÓS AINDA", "OCUPADOS", "LIMPANDO", "ESSA", "BAGUNÇA,", "LEMBRA?"],
+    "en": ["YEAH!", "WE'RE STILL", "BUSY", "CLEANING UP", "THIS", "MESS,", "REMEMBER?"]
+  },
+  {
+	"x1": 970,
+    "y1": 183,
+    "x2": 1194,
+    "y2": 385,
+    "ptbr": ["PELO", "MENOS", "É", "NOSSO!"],
+	"ptbrpp": ["PELO", "MENOS", "É", "NOSSO!"],
+    "en": ["AT", "LEAST", "IT'S", "OURS!"]
+  },
+  {
+	"x1": 1270,
+    "y1": 15,
+    "x2": 1738,
+    "y2": 256,
+    "ptbr": ["BAH!", "EU", "VOU", "ARRUMAR", "OUTRA", "EQUIPE", "PARA", "MIM!"],
+	"ptbrpp": ["BAH!", "*EU VOU(CONTRAÇÃO DE I WILL)", "ENCONTRAR PARA MIM MESMO", "OUTRA", "EQUIPE", "MIM!"],
+    "en": ["BAH!", "I'LL", "FIND MYSELF", "ANOTHER", "CREW!"
+]
+  },
+  {
+	"x1": 19,
+    "y1": 951,
+    "x2": 250,
+    "y2": 1078,
+    "ptbr": ["BREVE!"],
+	"ptbrpp": ["BREVE!"],
+    "en": ["SOON!"]
+  },
+  {
+	"x1": 303,
+    "y1": 976,
+    "x2": 757,
+    "y2": 1212,
+    "ptbr": ["MEMBROS", "DA", "IMPRENSA!", "NESTA", "ESCAVADEIRA", "ESPECIALMENTE", "PROJETADA..."],
+	"ptbrpp": ["MEMBROS", "DA", "IMPRENSA!", "NESTA", "ESCAVADEIRA", "ESPECIALMENTE", "PROJETADA..."],
+    "en": ["MEMBERS", "OF THE", "PRESS!", "IN THIS", "DIGGER...", "SPECIALLY-DESIGNED"]
+  },
+  {
+	"x1": 787,
+    "y1": 977,
+    "x2": 1686,
+    "y2": 1189,
+    "ptbr": ["...NOSSO", "PRÓPRIO", "MESTRE", "DO", "DESASTRE", "PRETENDE", "CHEGAR", "AO", "FUNDO", "DESTA", "QUESTÃO..."],
+	"ptbrpp": ["...NOSSO", "*SIGNIFICA MUITO PRÓPRIO, O SEU PRÓPRIO OU BEM DELE(A), SENDO UMA EXPRESSÃO USADA PARA ENFATIZAR FORTEMENTE A POSSE OU A EXCLUSIVIDADE DE ALGO", "MESTRE", "DO", "DESASTRE", "PRETENDE", "CHEGAR", "AO", "FUNDO", "DESTA", "QUESTÃO..."],
+    "en": ["...OUR", "VERY OWN", "MASTER", "OF", "DISASTER", "INTENDS", "TO GET", "TO THE", "BOTTOM", "OF THIS", "MATTER..."]
+  },
+  {
+	"x1": 1520,
+    "y1": 1801,
+    "x2": 1844,
+    "y2": 2081,
+    "ptbr": ["E", "EU", "VOU", "FAZER", "ISSO", "NA", "TV", "AO", "VIVO!", "VEJA", "SÓ!"],
+	"ptbrpp": ["E", "*I VOU(CONTRAÇÃO DE I WILL)", "FAZER", "ISSO", "NA", "AO VIVO!", "TV", "VEJA", "ME!"],
+    "en": ["AND", "I'LL", "DO", "IT", "ON", "LIVE", "TV!", "WATCH", "ME!"]
+  }
+  
+
+]
