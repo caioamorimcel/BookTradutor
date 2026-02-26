@@ -9,7 +9,7 @@ const schema = v.object({
 	pagina: v.string()
 });
 
-export const funcaoTotalDePaginas = query(schema, async ({ edicao, pagina }) => {
+export const funcaoLerTotalDePaginas = query(schema, async ({ edicao, pagina }) => {
 	const pasta = path.join(process.cwd(), 'static', edicao ?? '1');
 
 	if (!fs.existsSync(pasta)) return 1;

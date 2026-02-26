@@ -2,27 +2,20 @@
 	import IconePalavraPorPalavra from '$lib/icones/iconePalavraPorPalavra.svelte';
 	import { mount, unmount } from 'svelte';
 	import Swal from 'sweetalert2';
-	import Modal from './Modal.svelte';
-
-	let {
-		original,
-		traducaopp,
-		traducao,
-		voz
-	}: {
-		original: string[];
-		traducaopp: string[];
-		traducao: string[];
-		voz: string;
-	} = $props();
+	import ConteudoDoSweetalert from './ConteudoDoSweetalert.svelte';
+	import { arrayOriginal, arrayTraducao, arrayTraducaopp } from './estados.svelte';
 
 	function abrirSweetAlert() {
 		const container = document.createElement('div');
 
 		// 2. Monta o componente passando as props necessárias
-		const app = mount(Modal, {
+		const app = mount(ConteudoDoSweetalert, {
 			target: container,
-			props: { traducaopp, original, traducao, voz }
+			props: {
+				traducaopp: arrayTraducaopp.value,
+				original: arrayOriginal.value,
+				traducao: arrayTraducao.value
+			}
 		});
 
 		Swal.fire({

@@ -8,9 +8,8 @@
 	let {
 		traducaopp,
 		original,
-		traducao,
-		voz
-	}: { traducaopp: string[]; original: string[]; traducao: string[]; voz: string } = $props();
+		traducao
+	}: { traducaopp: string[]; original: string[]; traducao: string[] } = $props();
 
 	function abrir(traducao: string, original: string) {
 		palavraSelecionada = traducao; // Atualiza o conteúdo
@@ -39,7 +38,7 @@
 {/each}
 <br />
 <div class="mt-2">
-	<TextToSpeech texto={original.join(' ')} {voz} />
+	<TextToSpeech texto={original.join(' ')} />
 </div>
 
 <br />
