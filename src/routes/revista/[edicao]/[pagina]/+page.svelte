@@ -3,142 +3,90 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import IconeFechar from '$lib/icones/iconeFechar.svelte';
-	import { type Balao } from '$lib/types/typeBalao';
-	import { tick } from 'svelte';
 	import { fade, fly, slide } from 'svelte/transition';
 	import * as arrastar from './arrastar';
+	import {
+		alturaOriginal,
+		arrayOriginal,
+		baloes,
+		fontSize,
+		idioma,
+		indiceDoBalao,
+		larguraOriginal,
+		popupVisivel,
+		popupX,
+		popupY,
+		totalDePaginas,
+		traducao,
+		voz
+	} from './estados.svelte.js';
+	import { funcaoAbrirPopup } from './funcaoAbrirPopup.js';
+	import { funcaoFecharAoClicarFora } from './funcaoFecharAoClicarFora.js';
+	import { funcaoLerBaloes } from './funcaoLerBaloes.remote.js';
+	import { funcaoLerTotalDePaginas } from './funcaoLerTotalDePaginas.remote.js';
 	import { funcaoTeclas } from './funcaoTeclas.js';
 	import PalavraPorPalavra from './PalavraPorPalavra.svelte';
 	import SelecaoDeVoz from './SelecaoDeVoz.svelte';
 	import TextToSpeech from './TextToSpeech.svelte';
 
-	let { data } = $props();
-
-	let balaoJson = $state<Balao[]>([]);
 	let elementoImagem = $state<HTMLImageElement>();
-	let numberLarguraOriginal = $state(0);
-	let numberAlturaOriginal = $state(0);
-	let stringIdioma = $state<'ptbr' | 'en'>('ptbr');
-	let stringVoz = $state('');
-	let booleanPopupVisivel = $state(false);
-	let stringTraducao = $state('');
-	let arrayOriginal = $state<string[]>([]);
-	let arrayTraducaopp = $state<string[]>([]);
-	let arrayTraducao = $state<string[]>([]);
-	let numberPopupX = $state(0);
-	let numberPopupY = $state(0);
-	let numberIndiceDoBalao = $state<number | null>(null);
 
-	let numberPaginaAtual = $derived(parseInt(page.params.pagina ?? '1'));
-	const stateTransitionIn = $derived(
+	// DERIVEDS
+	const paginaAtual = $derived(parseInt(page.params.pagina ?? '1'));
+	const derivedTransitionIn = $derived(
 		page.url.searchParams.get('direction') === 'next' ? '100%' : '-100%'
 	);
-
-	const stateTransitionOut = $derived(
+	const derivedTransitionOut = $derived(
 		page.url.searchParams.get('direction') === 'next' ? '-100%' : '100%'
 	);
-
-	const asyncEffect = async () => {
-		const resultado = await fetch(`/${page.params.edicao}/json/${page.params.pagina}.json`);
-		balaoJson = await resultado.json();
-	};
+	/////
 
 	$effect(() => {
-		asyncEffect();
+		(async () => {
+			totalDePaginas.value = await funcaoLerTotalDePaginas({
+				edicao: page.params.edicao ?? '1',
+				pagina: page.params.pagina ?? '1'
+			});
+			baloes.value = await funcaoLerBaloes({
+				edicao: page.params.edicao ?? '1',
+				pagina: page.params.pagina ?? '1'
+			});
+		})();
 	});
 
-	// Fechar popup ao clicar fora
 	$effect(() => {
-		const fechar = (event: MouseEvent) => {
-			const target = event.target as HTMLElement;
-
-			// Ignora clique dentro do SweetAlert
-			if (target.closest('.swal2-container')) return;
-
-			// Ignora clique dentro do popup interno
-			if (target.closest('.popup-interno')) return;
-
-			booleanPopupVisivel = false;
-			numberIndiceDoBalao = null;
-		};
-
-		window.addEventListener('click', fechar);
-		return () => window.removeEventListener('click', fechar);
+		window.addEventListener('click', funcaoFecharAoClicarFora);
+		return () => window.removeEventListener('click', funcaoFecharAoClicarFora);
 	});
 
-	async function abrirPopup(event: MouseEvent, balao: Balao, index: number) {
-		event.stopPropagation();
-
-		// Toggle: se clicar no mesmo balão fecha
-		if (booleanPopupVisivel && numberIndiceDoBalao === index) {
-			booleanPopupVisivel = false;
-			numberIndiceDoBalao = null;
-			return;
-		}
-
-		const target = event.currentTarget as HTMLElement;
-		const container = target.offsetParent as HTMLElement;
-		const rect = target.getBoundingClientRect();
-		const containerRect = container.getBoundingClientRect();
-
-		const larguraPopup = 260;
-
-		let x = rect.left - containerRect.left + rect.width / 2 - larguraPopup / 2;
-		let y = rect.bottom - containerRect.top + 10;
-
-		const larguraContainer = container.offsetWidth;
-		if (x + larguraPopup > larguraContainer) x = larguraContainer - larguraPopup - 10;
-		if (x < 10) x = 10;
-
-		// Força transição: fecha antes de abrir novo popup
-		booleanPopupVisivel = false;
-		await tick(); // espera o DOM atualizar e aplicar out:slide
-
-		stringTraducao = balao[stringIdioma].join(' ');
-		arrayOriginal = balao['en'];
-		arrayTraducaopp = balao[`${stringIdioma}pp`];
-		arrayTraducao = balao[`${stringIdioma}`];
-		numberPopupX = x;
-		numberPopupY = y;
-		numberIndiceDoBalao = index;
-		booleanPopupVisivel = true;
-	}
-
-	let popupFontSize = $state(14); // tamanho inicial da fonte do popup
-
-	function aumentarFonte() {
-		if (popupFontSize < 30) popupFontSize += 2; // limite máximo 30px
-	}
-
-	function diminuirFonte() {
-		if (popupFontSize > 10) popupFontSize -= 2; // limite mínimo 10px
-	}
-
-	const transitionIn = (node: Element, args: { parType: 'transitionFade' | 'transitionFly' }) =>
-		args.parType === 'transitionFade'
+	function transitionIn(node: Element, args: { parType: 'transitionFade' | 'transitionFly' }) {
+		return args.parType === 'transitionFade'
 			? fade(node, { duration: 500, delay: 550 })
-			: fly(node, { duration: 500, delay: 550, x: stateTransitionIn });
-	const transitionOut = (node: Element, args: { parType: 'transitionFade' | 'transitionFly' }) =>
-		args.parType === 'transitionFade'
+			: fly(node, { duration: 500, delay: 550, x: derivedTransitionIn });
+	}
+
+	function transitionOut(node: Element, args: { parType: 'transitionFade' | 'transitionFly' }) {
+		return args.parType === 'transitionFade'
 			? fade(node, { duration: 500 })
-			: fly(node, { duration: 500, x: stateTransitionOut });
+			: fly(node, { duration: 500, x: derivedTransitionOut });
+	}
 </script>
 
-<svelte:window on:keydown={funcaoTeclas} />
+<svelte:window onkeydown={funcaoTeclas} />
 
 <div class="mt-2 mb-2 flex items-center justify-center gap-3">
 	<button
 		class="classButton disabled:cursor-not-allowed disabled:opacity-50"
-		disabled={numberPaginaAtual <= 1}
+		disabled={paginaAtual <= 1}
 		onclick={() =>
-			numberPaginaAtual > 1 &&
-			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual - 1}?direction=previous`))}
+			paginaAtual > 1 &&
+			goto(resolve(`/revista/${page.params.edicao}/${paginaAtual - 1}?direction=previous`))}
 	>
 		VOLTAR
 	</button>
 
 	<select
-		value={numberPaginaAtual}
+		value={paginaAtual}
 		onchange={(event) => {
 			const valorSelecionado = (event.currentTarget as HTMLSelectElement).value;
 			goto(resolve(`/revista/${page.params.edicao}/${valorSelecionado}`));
@@ -146,17 +94,17 @@
 		class="max-w-20 rounded border p-2"
 	>
 		<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars-->
-		{#each Array.from({ length: data.totalPaginas }) as _, p (p)}
-			<option value={p + 1}>{p + 1} / {data.totalPaginas}</option>
+		{#each Array.from({ length: totalDePaginas.value }) as _, p (p)}
+			<option value={p + 1}>{p + 1} / {totalDePaginas.value}</option>
 		{/each}
 	</select>
 
 	<button
 		class="classButton disabled:cursor-not-allowed disabled:opacity-50"
-		disabled={numberPaginaAtual >= data.totalPaginas}
+		disabled={paginaAtual >= totalDePaginas.value}
 		onclick={() =>
-			numberPaginaAtual < data.totalPaginas &&
-			goto(resolve(`/revista/${page.params.edicao}/${numberPaginaAtual + 1}?direction=next`))}
+			paginaAtual < totalDePaginas.value &&
+			goto(resolve(`/revista/${page.params.edicao}/${paginaAtual + 1}?direction=next`))}
 	>
 		AVANÇAR
 	</button>
@@ -181,32 +129,32 @@
 			class="mb-4 block w-full"
 			onload={() => {
 				if (elementoImagem) {
-					numberLarguraOriginal = elementoImagem.naturalWidth;
-					numberAlturaOriginal = elementoImagem.naturalHeight;
+					larguraOriginal.value = elementoImagem.naturalWidth;
+					alturaOriginal.value = elementoImagem.naturalHeight;
 				}
 			}}
 		/>
 	{/key}
 
-	{#each balaoJson as balao, i (i)}
+	{#each baloes.value as balao, i (i)}
 		<!-- svelte-ignore a11y_consider_explicit_label -->
 		<button
 			type="button"
 			class="absolute cursor-pointer bg-blue-500/30 p-0 lg:bg-transparent lg:hover:bg-red-500/20"
 			style="
-        left: {(balao.x1 / numberLarguraOriginal) * 100}%;
-        top: {(balao.y1 / numberAlturaOriginal) * 100}%;
-        width: {((balao.x2 - balao.x1) / numberLarguraOriginal) * 100}%;
-        height: {((balao.y2 - balao.y1) / numberAlturaOriginal) * 100}%;
+        left: {(balao.x1 / larguraOriginal.value) * 100}%;
+        top: {(balao.y1 / alturaOriginal.value) * 100}%;
+        width: {((balao.x2 - balao.x1) / larguraOriginal.value) * 100}%;
+        height: {((balao.y2 - balao.y1) / alturaOriginal.value) * 100}%;
       "
-			onclick={(e) => abrirPopup(e, balao, i)}
+			onclick={(e) => funcaoAbrirPopup(e, balao, i)}
 		></button>
 	{/each}
 
-	{#if booleanPopupVisivel}
+	{#if popupVisivel.value}
 		<div
 			class="absolute z-50 w-64"
-			style="left: {numberPopupX}px; top: {numberPopupY}px;"
+			style="left: {popupX.value}px; top: {popupY.value}px;"
 			in:slide={{ duration: 500 }}
 			out:slide={{ duration: 150 }}
 		>
@@ -214,35 +162,40 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
 				class="popup-interno relative rounded-2xl bg-black p-4 text-white shadow-xl"
-				style="font-size: {popupFontSize}px;"
+				style="font-size: {fontSize.value}px;"
 				onclick={(event) => {
 					event.stopPropagation(); // ⚡ impede o fechamento do popup
 				}}
 			>
-				{stringTraducao}
+				{traducao.value}
 
 				<div class="mt-2 flex justify-between gap-1">
 					<button
-						onclick={() => ((booleanPopupVisivel = false), (numberIndiceDoBalao = null))}
+						onclick={() => ((popupVisivel.value = false), (indiceDoBalao.value = null))}
 						class="cursor-pointer rounded bg-blue-500 px-2 py-1"
 					>
 						<IconeFechar />
 					</button>
-					<PalavraPorPalavra
-						original={arrayOriginal}
-						traducao={arrayTraducao}
-						traducaopp={arrayTraducaopp}
-						voz={stringVoz}
-					/>
+					<PalavraPorPalavra />
 
-					<TextToSpeech voz={stringVoz} texto={arrayOriginal.join(' ')} />
+					<TextToSpeech texto={arrayOriginal.value.join(' ')} />
 
 					<div class="flex gap-1">
-						<button onclick={diminuirFonte} class="cursor-pointer rounded bg-gray-700 px-2 py-1"
-							>-</button
+						<button
+							onclick={() => {
+								if (fontSize.value > 10) {
+									fontSize.value -= 2; // limite mínimo 10px
+								}
+							}}
+							class="cursor-pointer rounded bg-gray-700 px-2 py-1">-</button
 						>
-						<button onclick={aumentarFonte} class="cursor-pointer rounded bg-gray-700 px-2 py-1"
-							>+</button
+						<button
+							onclick={() => {
+								if (fontSize.value < 30) {
+									fontSize.value += 2; // limite máximo 30px
+								}
+							}}
+							class="cursor-pointer rounded bg-gray-700 px-2 py-1">+</button
 						>
 					</div>
 				</div>
@@ -257,11 +210,11 @@
 	<fieldset class="daisy-fieldset w-xs rounded-box border border-base-300 bg-base-200 p-4">
 		<legend class="daisy-fieldset-legend">CONFIGURAÇÕES:</legend>
 		<p class="daisy-label">IDIOMA:</p>
-		<select bind:value={stringIdioma} class="daisy-select">
+		<select bind:value={idioma.value} class="daisy-select">
 			<option value="ptbr">Português</option>
 			<option value="en">English</option>
 		</select>
 		<p class="daisy-label">VOZ:</p>
-		<SelecaoDeVoz bind:voz={stringVoz} />
+		<SelecaoDeVoz bind:voz={voz.value} />
 	</fieldset>
 </div>
