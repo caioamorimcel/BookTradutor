@@ -1,23 +1,27 @@
-<script lang="ts">
-	let modal = $state<HTMLDialogElement | undefined>(undefined);
+<!-- <script lang="ts">
+	import type { PageProps } from './$types';
 
-	function openModal() {
-		modal?.showModal();
-	}
-
-	function closeModal() {
-		modal?.close();
-	}
+	let { data }: PageProps = $props();
 </script>
 
-<button onclick={openModal}>open modal</button>
+{JSON.stringify(data.dados)} -->
 
-<dialog bind:this={modal} class="daisy-modal">
-	<div class="daisy-modal-box">
-		<h3 class="text-lg font-bold">Hello!</h3>
-		<p class="py-4">Press ESC key or click outside to close</p>
+<script lang="ts">
+	let dados = $state([]);
+
+	async function carregar() {
+		const res = await fetch('/api/dados');
+		dados = await res.json();
+	}
+
+	$effect(() => {
+		carregar();
+	});
+</script>
+
+{#each dados as item, i (i)}
+	<div>
+		<h2>{item.nome}</h2>
+		<p>{item.editora}</p>
 	</div>
-	<form method="dialog" class="daisy-modal-backdrop">
-		<button onclick={closeModal}>close</button>
-	</form>
-</dialog>
+{/each}
