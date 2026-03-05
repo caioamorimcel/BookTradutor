@@ -12,3 +12,10 @@
 		@apply cursor-not-allowed bg-gray-300 text-gray-500 opacity-70;
 	}
 }
+
+@theme {
+	--color-gray-light: #f3f4f6;
+	--color-gray-dark: #111827;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
