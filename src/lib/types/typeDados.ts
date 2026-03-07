@@ -7,7 +7,8 @@ export const schemaDados = v.object({
 	capa: v.string(),
 	rating: v.optional(v.number()),
 	banner: v.optional(v.string()),
-	pasta: v.string()
+	pasta: v.string(),
+	saga: v.optional(v.boolean())
 });
 
 export type typeDados = {
@@ -18,4 +19,5 @@ export type typeDados = {
 	rating?: number;
 	banner?: string;
 	pasta: string;
+	saga?: boolean;
 };

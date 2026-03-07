@@ -5,13 +5,14 @@
 
 	let { revista }: { revista: typeDados } = $props();
 
-	// const getYear = (date: string | number | Date) => {
-	// 	const d = new Date(date);
-	// 	return d.getFullYear();
-	// };
+	const url = $derived(
+		(revista.saga ? `/flix/${revista.pasta}` : `/leitura/${revista.pasta}/1`) as
+			| `/flix/${string}`
+			| `/leitura/${string}/1`
+	);
 </script>
 
-<a href={resolve('/')} class=" bg-light dark:bg-gray-dark dark:text-gray-light">
+<a href={resolve(url)} class=" bg-light dark:bg-gray-dark dark:text-gray-light">
 	<div class="group relative">
 		<div class="text-light absolute z-20 flex h-full w-full flex-col justify-between">
 			<div class="p-6">

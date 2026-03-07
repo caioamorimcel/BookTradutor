@@ -10,6 +10,8 @@ export function handleTouchStart(e: TouchEvent) {
 }
 
 export function handleTouchEnd(e: TouchEvent) {
+	const saga = page.params.saga === undefined ? '' : `${page.params.saga}/`;
+
 	endX = e.changedTouches[0].clientX;
 
 	const distance = endX - startX;
@@ -17,7 +19,7 @@ export function handleTouchEnd(e: TouchEvent) {
 	if (distance > 50) {
 		goto(
 			resolve(
-				`/leitura/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`
+				`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`
 			)
 		);
 	}
@@ -25,7 +27,7 @@ export function handleTouchEnd(e: TouchEvent) {
 	if (distance < -50) {
 		goto(
 			resolve(
-				`/leitura/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`
+				`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`
 			)
 		);
 	}

@@ -3,15 +3,16 @@
 	import type { typeDados } from '$lib/types/typeDados';
 	import Rating from './Rating.svelte';
 
-	// const getYear = (date: string | number | Date) => {
-	// 	const d = new Date(date);
-	// 	return d.getFullYear();
-	// };
-
 	let { revista }: { revista: typeDados } = $props();
+
+	const url = $derived(
+		(revista.saga ? `/flix/${revista.pasta}` : `/leitura/${revista.pasta}/1`) as
+			| `/flix/${string}`
+			| `/leitura/${string}/1`
+	);
 </script>
 
-<a href={resolve(`/leitura/${revista.pasta}/1`)} data-sveltekit-prefetch class="bg-light">
+<a href={resolve(url)} data-sveltekit-prefetch class="bg-light">
 	<div class="group relative overflow-hidden rounded-lg sm:rounded-xl">
 		<div class="text-light absolute z-20 flex h-full w-full flex-col items-end justify-between">
 			<div class="p-0">

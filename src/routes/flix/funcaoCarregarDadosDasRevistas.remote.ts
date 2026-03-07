@@ -8,7 +8,7 @@ import * as v from 'valibot';
 const arrayTypeDadosSchema = v.array(schemaDados);
 
 export const funcaoCarregarDadosDasRevistas = query(async (): Promise<typeDados[]> => {
-	const basePath = path.resolve('static');
+	const basePath = path.resolve('static/revistas');
 	const pastas = fs.readdirSync(basePath);
 
 	const resultado: unknown[] = [];

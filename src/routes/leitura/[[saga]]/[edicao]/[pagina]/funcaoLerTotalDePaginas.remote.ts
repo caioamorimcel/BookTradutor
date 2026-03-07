@@ -13,9 +13,9 @@ const schema = v.object({
 export const funcaoLerTotalDePaginas = query(schema, async ({ edicao, pagina, saga }) => {
 	let pasta = '';
 	if (saga === undefined) {
-		pasta = path.join(process.cwd(), 'static', edicao ?? '1');
+		pasta = path.join(process.cwd(), 'static', 'revistas', edicao ?? '1');
 	} else {
-		pasta = path.join(process.cwd(), 'static', saga, edicao ?? '1');
+		pasta = path.join(process.cwd(), 'static', 'revistas', saga, edicao ?? '1');
 	}
 
 	if (!fs.existsSync(pasta)) return 1;

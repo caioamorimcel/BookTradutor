@@ -12,14 +12,14 @@ export const funcaoLerBaloes = query(schema, async ({ pagina, edicao, saga }): P
 	const { fetch } = getRequestEvent();
 
 	if (saga === undefined) {
-		const resultado = await fetch(`/${edicao}/${pagina}.json`);
+		const resultado = await fetch(`/revistas/${edicao}/${pagina}.json`);
 		if (resultado.ok === false) {
 			return [];
 		}
 		return await resultado.json();
 	}
 
-	const resultado = await fetch(`/${saga}/${edicao}/${pagina}.json`);
+	const resultado = await fetch(`/revistas/${saga}/${edicao}/${pagina}.json`);
 	if (resultado.ok === false) {
 		return [];
 	}

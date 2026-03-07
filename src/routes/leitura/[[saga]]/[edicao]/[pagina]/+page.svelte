@@ -96,7 +96,7 @@
 		value={paginaAtual}
 		onchange={(event) => {
 			const valorSelecionado = (event.currentTarget as HTMLSelectElement).value;
-			goto(resolve(`/leitura/${page.params.edicao}/${valorSelecionado}`));
+			goto(resolve(`/leitura/${derivedSaga}${page.params.edicao}/${valorSelecionado}`));
 		}}
 		class="max-w-20 rounded border p-2"
 	>
@@ -111,7 +111,9 @@
 		disabled={paginaAtual >= totalDePaginas.value}
 		onclick={() =>
 			paginaAtual < totalDePaginas.value &&
-			goto(resolve(`/leitura/${page.params.edicao}/${paginaAtual + 1}?direction=next`))}
+			goto(
+				resolve(`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual + 1}?direction=next`)
+			)}
 	>
 		AVANÇAR
 	</button>
@@ -131,7 +133,7 @@
 			ontouchstart={arrastar.handleTouchStart}
 			ontouchend={arrastar.handleTouchEnd}
 			bind:this={elementoImagem}
-			src={`/${derivedSaga}${page.params.edicao}/${page.params.pagina}.jpg`}
+			src={`/revistas/${derivedSaga}${page.params.edicao}/${page.params.pagina}.jpg`}
 			alt="Quadrinho"
 			class="mb-4 block w-full"
 			onload={() => {
