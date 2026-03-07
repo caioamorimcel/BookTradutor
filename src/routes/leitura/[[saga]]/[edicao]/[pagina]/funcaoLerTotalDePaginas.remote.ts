@@ -19,10 +19,10 @@ export const funcaoLerTotalDePaginas = query(schema, async ({ edicao, pagina }) 
 	const totalDePaginas = paginas.length;
 
 	if (parseInt(pagina ?? '1') < 1) {
-		throw redirect(302, `/revista/${edicao ?? '1'}/1`);
+		throw redirect(302, `/leitura/${edicao ?? '1'}/1`);
 	}
 	if (parseInt(pagina ?? '1') > paginas.length) {
-		throw redirect(302, `/revista/${edicao ?? '1'}/${totalDePaginas}`);
+		throw redirect(302, `/leitura/${edicao ?? '1'}/${totalDePaginas}`);
 	}
 
 	return paginas.length;

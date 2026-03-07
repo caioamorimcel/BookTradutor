@@ -22,7 +22,11 @@
 	});
 </script>
 
-<div class="mt-8 mb-6">
+<svelte:head>
+	<title>COMIC:FLIX</title>
+</svelte:head>
+
+<div class="mt-0 mb-6">
 	<Banner colecao={dados.filter((current) => current.banner)} />
 </div>
 

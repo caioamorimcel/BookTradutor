@@ -13,7 +13,7 @@ export function funcaoTeclas(e: KeyboardEvent) {
 		case 'ArrowLeft':
 			goto(
 				resolve(
-					`/revista/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`
+					`/leitura/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`
 				)
 			);
 
@@ -21,7 +21,7 @@ export function funcaoTeclas(e: KeyboardEvent) {
 		case 'ArrowRight':
 			goto(
 				resolve(
-					`/revista/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`
+					`/leitura/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`
 				)
 			);
 			break;

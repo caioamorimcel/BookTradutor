@@ -11,7 +11,7 @@
 	let { revista }: { revista: typeDados } = $props();
 </script>
 
-<a href={resolve('/')} data-sveltekit-prefetch class="bg-light">
+<a href={resolve(`/leitura/${revista.pasta}/1`)} data-sveltekit-prefetch class="bg-light">
 	<div class="group relative overflow-hidden rounded-lg sm:rounded-xl">
 		<div class="text-light absolute z-20 flex h-full w-full flex-col items-end justify-between">
 			<div class="p-0">

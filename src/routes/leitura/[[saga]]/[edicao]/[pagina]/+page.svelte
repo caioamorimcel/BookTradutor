@@ -80,7 +80,7 @@
 		disabled={paginaAtual <= 1}
 		onclick={() =>
 			paginaAtual > 1 &&
-			goto(resolve(`/revista/${page.params.edicao}/${paginaAtual - 1}?direction=previous`))}
+			goto(resolve(`/leitura/${page.params.edicao}/${paginaAtual - 1}?direction=previous`))}
 	>
 		VOLTAR
 	</button>
@@ -89,7 +89,7 @@
 		value={paginaAtual}
 		onchange={(event) => {
 			const valorSelecionado = (event.currentTarget as HTMLSelectElement).value;
-			goto(resolve(`/revista/${page.params.edicao}/${valorSelecionado}`));
+			goto(resolve(`/leitura/${page.params.edicao}/${valorSelecionado}`));
 		}}
 		class="max-w-20 rounded border p-2"
 	>
@@ -104,7 +104,7 @@
 		disabled={paginaAtual >= totalDePaginas.value}
 		onclick={() =>
 			paginaAtual < totalDePaginas.value &&
-			goto(resolve(`/revista/${page.params.edicao}/${paginaAtual + 1}?direction=next`))}
+			goto(resolve(`/leitura/${page.params.edicao}/${paginaAtual + 1}?direction=next`))}
 	>
 		AVANÇAR
 	</button>
