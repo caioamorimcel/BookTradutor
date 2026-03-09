@@ -2,24 +2,23 @@
 	import Banner from '$lib/componentes/Banner.svelte';
 	import Revista from '$lib/componentes/Revista.svelte';
 	import RolagemHorizontal from '$lib/componentes/RolagemHorizontal.svelte';
-	import type { typeDados } from '$lib/types/typeDados';
-	import { fade } from 'svelte/transition';
+	// import { fade } from 'svelte/transition';
 	import { funcaoCarregarDadosDasRevistas } from './funcaoCarregarDadosDasRevistas.remote';
 
-	let dados = $state<typeDados[]>([]);
+	let dados = $derived(await funcaoCarregarDadosDasRevistas());
+	// let dados = $state<typeDados[]>([]);
+	// $effect(() => {
+	// 	(async () => {
+	// 		try {
+	// 			dados = await funcaoCarregarDadosDasRevistas();
+	// 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// 		} catch (e: any) {
+	// 			alert(e.body.message); // aqui você pega a mensagem do erro
+	// 		}
 
-	$effect(() => {
-		(async () => {
-			try {
-				dados = await funcaoCarregarDadosDasRevistas();
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			} catch (e: any) {
-				alert(e.body.message); // aqui você pega a mensagem do erro
-			}
-
-			dados = await funcaoCarregarDadosDasRevistas();
-		})();
-	});
+	// 		dados = await funcaoCarregarDadosDasRevistas();
+	// 	})();
+	// });
 </script>
 
 <svelte:head>
@@ -40,8 +39,10 @@
 <div class="container mt-2 mb-7">
 	<h2 class="text-2xl font-bold text-gray-dark sm:text-3xl dark:text-gray-light">REVISTAS</h2>
 	<div class="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-7">
-		{#each dados as revista, index (index)}
-			<div in:fade={{ duration: 300, delay: index * 100 }}><Revista {revista} /></div>
+		{#each dados as revista (revista.pasta)}
+			<!-- <div in:fade={{ duration: 300, delay: index * 100 }}> -->
+			<Revista {revista} transicao={true} />
+			<!-- </div> -->
 		{/each}
 	</div>
 </div>

@@ -3,7 +3,7 @@
 	import type { typeDados } from '$lib/types/typeDados';
 	import Rating from './Rating.svelte';
 
-	let { revista }: { revista: typeDados } = $props();
+	let { revista, transicao = false }: { revista: typeDados; transicao?: boolean } = $props();
 
 	const url = $derived(
 		(revista.saga ? `/flix/${revista.pasta}` : `/leitura/${revista.pasta}/1`) as
@@ -12,7 +12,12 @@
 	);
 </script>
 
-<a href={resolve(url)} data-sveltekit-prefetch class="bg-light">
+<a
+	style:view-transition-name={transicao ? `revista-${revista.pasta}` : ''}
+	href={resolve(url)}
+	data-sveltekit-prefetch
+	class="bg-light"
+>
 	<div class="group relative overflow-hidden rounded-lg sm:rounded-xl">
 		<div class="text-light absolute z-20 flex h-full w-full flex-col items-end justify-between">
 			<div class="p-0">
