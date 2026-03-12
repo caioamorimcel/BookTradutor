@@ -21,7 +21,7 @@ export function speak(
 		rate?: number;
 		pitch?: number;
 		volume?: number;
-	}
+	},
 ) {
 	if (!window.speechSynthesis) return;
 

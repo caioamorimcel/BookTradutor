@@ -1,10 +1,9 @@
 <script lang="ts">
 	// import { setContext } from 'svelte';
 	// import { writable } from 'svelte/store';
-	import Rodape from '$lib/componentes/Rodape.svelte';
 	import { tema } from '$lib/stores/tema.svelte';
-	// import NavigationElement from '$components/bootstrap/NavigationElement.svelte';
-
+	import Navigation from './Navigation.svelte';
+	import Rodape from './Rodape.svelte';
 	// import '$lib/assets/css/app.css';
 	// import '$lib/assets/css/typing.css';
 	import type { Snippet } from 'svelte';
@@ -26,7 +25,7 @@
 
 <div class="{tema.value} flex h-screen flex-col">
 	<div class="sticky top-0 z-50 bg-gray-light dark:bg-gray-dark">
-		<!-- <NavigationElement /> -->
+		<Navigation />
 	</div>
 	<main class="grow bg-gray-light dark:bg-gray-dark">
 		{@render children()}

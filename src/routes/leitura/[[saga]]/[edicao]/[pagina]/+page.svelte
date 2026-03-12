@@ -18,7 +18,7 @@
 		popupY,
 		totalDePaginas,
 		traducao,
-		voz
+		voz,
 	} from './estados.svelte.js';
 	import { funcaoAbrirPopup } from './funcaoAbrirPopup.js';
 	import { funcaoFecharAoClicarFora } from './funcaoFecharAoClicarFora.js';
@@ -34,22 +34,25 @@
 	// DERIVEDS
 	const paginaAtual = $derived(parseInt(page.params.pagina ?? '1'));
 	const derivedTransitionIn = $derived(
-		page.url.searchParams.get('direction') === 'next' ? '100%' : '-100%'
+		page.url.searchParams.get('direction') === 'next' ? '100%' : '-100%',
 	);
 	const derivedTransitionOut = $derived(
-		page.url.searchParams.get('direction') === 'next' ? '-100%' : '100%'
+		page.url.searchParams.get('direction') === 'next' ? '-100%' : '100%',
 	);
+	const derivedSaga = $derived(page.params.saga ? `${page.params.saga}/` : '');
 	/////
 
 	$effect(() => {
 		(async () => {
 			totalDePaginas.value = await funcaoLerTotalDePaginas({
 				edicao: page.params.edicao ?? '1',
-				pagina: page.params.pagina ?? '1'
+				pagina: page.params.pagina ?? '1',
+				saga: page.params.saga,
 			});
 			baloes.value = await funcaoLerBaloes({
 				edicao: page.params.edicao ?? '1',
-				pagina: page.params.pagina ?? '1'
+				pagina: page.params.pagina ?? '1',
+				saga: page.params.saga,
 			});
 		})();
 	});
@@ -80,7 +83,11 @@
 		disabled={paginaAtual <= 1}
 		onclick={() =>
 			paginaAtual > 1 &&
-			goto(resolve(`/revista/${page.params.edicao}/${paginaAtual - 1}?direction=previous`))}
+			goto(
+				resolve(
+					`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual - 1}?direction=previous`,
+				),
+			)}
 	>
 		VOLTAR
 	</button>
@@ -89,7 +96,7 @@
 		value={paginaAtual}
 		onchange={(event) => {
 			const valorSelecionado = (event.currentTarget as HTMLSelectElement).value;
-			goto(resolve(`/revista/${page.params.edicao}/${valorSelecionado}`));
+			goto(resolve(`/leitura/${derivedSaga}${page.params.edicao}/${valorSelecionado}`));
 		}}
 		class="max-w-20 rounded border p-2"
 	>
@@ -104,7 +111,9 @@
 		disabled={paginaAtual >= totalDePaginas.value}
 		onclick={() =>
 			paginaAtual < totalDePaginas.value &&
-			goto(resolve(`/revista/${page.params.edicao}/${paginaAtual + 1}?direction=next`))}
+			goto(
+				resolve(`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual + 1}?direction=next`),
+			)}
 	>
 		AVANÇAR
 	</button>
@@ -115,16 +124,16 @@
 		<img
 			in:transitionIn|global={{
 				parType:
-					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly'
+					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly',
 			}}
 			out:transitionOut={{
 				parType:
-					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly'
+					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly',
 			}}
 			ontouchstart={arrastar.handleTouchStart}
 			ontouchend={arrastar.handleTouchEnd}
 			bind:this={elementoImagem}
-			src={`/${page.params.edicao}/${page.params.pagina}.jpg`}
+			src={`/revistas/${derivedSaga}${page.params.edicao}/${page.params.pagina}.jpg`}
 			alt="Quadrinho"
 			class="mb-4 block w-full"
 			onload={() => {

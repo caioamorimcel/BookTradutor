@@ -2,6 +2,6 @@
 	"recommendations": [
 		"esbenp.prettier-vscode", // PRETTIER
 		"svelte.svelte-vscode", // SVELTE FOR VS CODE
-        "dbaeumer.vscode-eslint" // ESLINT
+		"dbaeumer.vscode-eslint" // ESLINT
 	]
 }

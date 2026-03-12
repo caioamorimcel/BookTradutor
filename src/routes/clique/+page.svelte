@@ -5,7 +5,7 @@
 		y1: 311,
 		x2: 1328,
 		y2: 495,
-		texto: 'Você clicou no balão! 💬'
+		texto: 'Você clicou no balão! 💬',
 	};
 
 	// tamanho real da imagem

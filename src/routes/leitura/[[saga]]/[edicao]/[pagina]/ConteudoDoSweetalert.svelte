@@ -8,7 +8,7 @@
 	let {
 		traducaopp,
 		original,
-		traducao
+		traducao,
 	}: { traducaopp: string[]; original: string[]; traducao: string[] } = $props();
 
 	function abrir(traducao: string, original: string) {

@@ -1,17 +1,18 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import Rating from '$lib/componentes/Rating.svelte';
 	import type { typeDados } from '$lib/types/typeDados';
-	import Rating from './Rating.svelte';
 
 	let { revista }: { revista: typeDados } = $props();
 
-	// const getYear = (date: string | number | Date) => {
-	// 	const d = new Date(date);
-	// 	return d.getFullYear();
-	// };
+	const url = $derived(
+		(revista.saga ? `/flix/${revista.pasta}` : `/leitura/${revista.pasta}/1`) as
+			| `/flix/${string}`
+			| `/leitura/${string}/1`,
+	);
 </script>
 
-<a href={resolve('/')} class=" bg-light dark:bg-gray-dark dark:text-gray-light">
+<a href={resolve(url)} class=" bg-light dark:bg-gray-dark dark:text-gray-light">
 	<div class="group relative">
 		<div class="text-light absolute z-20 flex h-full w-full flex-col justify-between">
 			<div class="p-6">
@@ -34,7 +35,7 @@
 		></div>
 
 		<img
-			class="bg-light h-80 w-full object-cover object-center transition-all duration-200 group-hover:scale-105 sm:h-128"
+			class="bg-light h-80 w-full object-cover object-center transition-all duration-200 group-hover:scale-105 sm:h-80"
 			src={revista.banner}
 			alt="poster"
 		/>

@@ -7,7 +7,7 @@
 	import Revista from './Revista.svelte';
 
 	let {
-		colecao
+		colecao,
 	}: {
 		colecao: typeDados[];
 	} = $props();
@@ -46,7 +46,7 @@
 		{#each colecao as revista, index (index)}
 			<SwiperSlide>
 				<div in:fade={{ duration: 300, delay: index * 100 }}>
-					<Revista {revista} />
+					<Revista {revista} transicao={false} />
 				</div>
 			</SwiperSlide>
 		{/each}
