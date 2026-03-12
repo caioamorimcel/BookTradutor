@@ -27,3 +27,18 @@
 		</div>
 	</div>
 </footer>
+
+<style>
+	.container {
+		width: 100%;
+		margin-right: auto;
+		margin-left: auto;
+		padding-right: 0.5rem /* 8px */;
+		padding-left: 0.5rem /* 8px */;
+	}
+	@media (min-width: 1280px) {
+		.container {
+			max-width: 1280px;
+		}
+	}
+</style>

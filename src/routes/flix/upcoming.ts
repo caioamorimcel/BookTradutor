@@ -1,7 +1,7 @@
 export const upcoming = {
 	dates: {
 		maximum: '2026-03-25',
-		minimum: '2026-03-04'
+		minimum: '2026-03-04',
 	},
 	page: 1,
 	results: [
@@ -20,7 +20,7 @@ export const upcoming = {
 			title: 'Shelter',
 			video: false,
 			vote_average: 6.73,
-			vote_count: 189
+			vote_count: 189,
 		},
 		{
 			adult: false,
@@ -37,7 +37,7 @@ export const upcoming = {
 			title: 'Scream 7',
 			video: false,
 			vote_average: 6,
-			vote_count: 182
+			vote_count: 182,
 		},
 		{
 			adult: false,
@@ -54,7 +54,7 @@ export const upcoming = {
 			title: 'Turbulence',
 			video: false,
 			vote_average: 5.6,
-			vote_count: 54
+			vote_count: 54,
 		},
 		{
 			adult: false,
@@ -71,7 +71,7 @@ export const upcoming = {
 			title: 'Dog 51',
 			video: false,
 			vote_average: 6.3,
-			vote_count: 207
+			vote_count: 207,
 		},
 		{
 			adult: false,
@@ -88,7 +88,7 @@ export const upcoming = {
 			title: 'Greenland 2: Migration',
 			video: false,
 			vote_average: 6.507,
-			vote_count: 539
+			vote_count: 539,
 		},
 		{
 			adult: false,
@@ -105,7 +105,7 @@ export const upcoming = {
 			title: 'The Orphans',
 			video: false,
 			vote_average: 6.153,
-			vote_count: 62
+			vote_count: 62,
 		},
 		{
 			adult: false,
@@ -122,7 +122,7 @@ export const upcoming = {
 			title: 'Arco',
 			video: false,
 			vote_average: 7.622,
-			vote_count: 94
+			vote_count: 94,
 		},
 		{
 			adult: false,
@@ -139,7 +139,7 @@ export const upcoming = {
 			title: '"Wuthering Heights"',
 			video: false,
 			vote_average: 6.484,
-			vote_count: 430
+			vote_count: 430,
 		},
 		{
 			adult: false,
@@ -156,7 +156,7 @@ export const upcoming = {
 			title: 'GOAT',
 			video: false,
 			vote_average: 7.5,
-			vote_count: 85
+			vote_count: 85,
 		},
 		{
 			adult: false,
@@ -173,7 +173,7 @@ export const upcoming = {
 			title: 'The Dreadful',
 			video: false,
 			vote_average: 6.5,
-			vote_count: 47
+			vote_count: 47,
 		},
 		{
 			adult: false,
@@ -190,7 +190,7 @@ export const upcoming = {
 			title: 'Blades of the Guardians: Wind Rises in the Desert',
 			video: false,
 			vote_average: 7.727,
-			vote_count: 22
+			vote_count: 22,
 		},
 		{
 			adult: false,
@@ -207,7 +207,7 @@ export const upcoming = {
 			title: 'Marty Supreme',
 			video: false,
 			vote_average: 7.525,
-			vote_count: 1080
+			vote_count: 1080,
 		},
 		{
 			adult: false,
@@ -224,7 +224,7 @@ export const upcoming = {
 			title: 'Hoppers',
 			video: false,
 			vote_average: 8.1,
-			vote_count: 18
+			vote_count: 18,
 		},
 		{
 			adult: false,
@@ -241,7 +241,7 @@ export const upcoming = {
 			title: 'Hamnet',
 			video: false,
 			vote_average: 7.7,
-			vote_count: 808
+			vote_count: 808,
 		},
 		{
 			adult: false,
@@ -258,7 +258,7 @@ export const upcoming = {
 			title: 'David',
 			video: false,
 			vote_average: 8.1,
-			vote_count: 94
+			vote_count: 94,
 		},
 		{
 			adult: false,
@@ -275,7 +275,7 @@ export const upcoming = {
 			title: 'Kraken',
 			video: false,
 			vote_average: 7.667,
-			vote_count: 6
+			vote_count: 6,
 		},
 		{
 			adult: false,
@@ -292,7 +292,7 @@ export const upcoming = {
 			title: 'Crime 101',
 			video: false,
 			vote_average: 6.991,
-			vote_count: 117
+			vote_count: 117,
 		},
 		{
 			adult: false,
@@ -309,7 +309,7 @@ export const upcoming = {
 			title: 'Resurrection',
 			video: false,
 			vote_average: 6.674,
-			vote_count: 43
+			vote_count: 43,
 		},
 		{
 			adult: false,
@@ -326,7 +326,7 @@ export const upcoming = {
 			title: 'The Bride!',
 			video: false,
 			vote_average: 8.5,
-			vote_count: 2
+			vote_count: 2,
 		},
 		{
 			adult: false,
@@ -343,9 +343,9 @@ export const upcoming = {
 			title: '96 Minutes',
 			video: false,
 			vote_average: 5.869,
-			vote_count: 65
-		}
+			vote_count: 65,
+		},
 	],
 	total_pages: 59,
-	total_results: 1168
+	total_results: 1168,
 };
