@@ -5,7 +5,7 @@
 	let {
 		original,
 		traducaopp,
-		traducao
+		traducao,
 	}: {
 		original: string[];
 		traducaopp: string[];
@@ -24,7 +24,7 @@
 				</span>
 			`;
 			})
-			.join(' ')
+			.join(' '),
 	);
 
 	function abrirSweetAlert() {
@@ -33,10 +33,10 @@
 			html: `${aa} <br/><br/> ${traducao.join(' ')}`,
 			customClass: {
 				popup: 'meu-swal',
-				title: 'meu-titulo-pequeno'
+				title: 'meu-titulo-pequeno',
 			},
 			footer: '* Clique em cada palavra isoladamente para ver sua tradução.',
-			confirmButtonColor: '#3085d6'
+			confirmButtonColor: '#3085d6',
 		});
 	}
 </script>

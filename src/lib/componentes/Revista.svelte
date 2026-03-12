@@ -8,7 +8,7 @@
 	const url = $derived(
 		(revista.saga ? `/flix/${revista.pasta}` : `/leitura/${revista.pasta}/1`) as
 			| `/flix/${string}`
-			| `/leitura/${string}/1`
+			| `/leitura/${string}/1`,
 	);
 </script>
 

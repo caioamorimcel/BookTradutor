@@ -4,5 +4,8 @@
 	"rating":9,
 	"banner": "/revistas/batmanabsolute/1/1.jpg",
 	"pasta": "batmanabsolute",
-	"saga": true
+	"saga": true,
+	"editora": "DC COMICS",
+	"ano": "2024...",
+	"descricao":"Releitura radical do mito do Batman, mantendo a essência do personagem enquanto altera elementos fundamentais de sua origem, ambiente e personalidade. Diferente da versão clássica do herói, esta versão enfatiza um Batman mais físico, brutal e próximo das ruas, focado em sobrevivência e justiça direta."
 }

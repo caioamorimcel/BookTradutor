@@ -7,7 +7,7 @@
 	import Revista from './Revista.svelte';
 
 	let {
-		colecao
+		colecao,
 	}: {
 		colecao: typeDados[];
 	} = $props();

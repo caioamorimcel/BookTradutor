@@ -5,7 +5,7 @@
 	import type { typeDados } from '$lib/types/typeDados';
 
 	let {
-		saga
+		saga,
 		//providers
 	}: { saga: typeDados } = $props();
 
@@ -36,7 +36,17 @@
 		}}
 	/>
 	<div class="dark:text-light flex flex-col">
-		<div class="mt-4 text-sm sm:mt-0">cccccc</div>
+		<div class="mt-4 text-sm sm:mt-0">
+			{#if saga.editora}
+				{saga.editora}
+			{/if}
+			{#if saga.ano}
+				<span class="mt-1 inline-flex items-center">
+					(<Icon src={Clock} class="w-3" />
+					<span>{saga.ano}</span>)
+				</span>
+			{/if}
+		</div>
 		<div class="font-secondary text-4xl font-bold">
 			{saga.titulo}
 		</div>
@@ -57,20 +67,19 @@
 				<Rating valor={saga.rating} />
 			{/if}
 		</div>
-		<div class="text-gray flex items-center space-x-1 text-xs font-medium">
+		<!-- <div class="text-gray flex items-center space-x-1 text-xs font-medium">
 			{#if saga.ano}
-				<div>{saga.ano}</div>
+				<div class="mt-1 flex items-center">
+					<Icon src={Clock} class="w-3" />
+					<span>{saga.ano}</span>
+				</div>
 			{/if}
-			<!-- {#if saga.runtime} -->
-			<div class="flex items-center">
-				<Icon src={Clock} class="w-3" />
-				<span>aaaaaaa</span>
+		</div> -->
+		{#if saga.descricao}
+			<div class="aamax-w-2xl">
+				<p class="mt-2">{saga.descricao}</p>
 			</div>
-			<!-- {/if} -->
-		</div>
-		<div class="max-w-2xl">
-			<p class="mt-2">{saga.titulo}</p>
-		</div>
+		{/if}
 		<div class="text-gray mt-2 flex items-center space-x-4 text-xs">
 			<!-- {#if saga.homepage} -->
 			<div class="flex items-center space-x-1">

@@ -14,8 +14,8 @@
 			props: {
 				traducaopp: arrayTraducaopp.value,
 				original: arrayOriginal.value,
-				traducao: arrayTraducao.value
-			}
+				traducao: arrayTraducao.value,
+			},
 		});
 
 		Swal.fire({
@@ -23,13 +23,13 @@
 			html: container,
 			customClass: {
 				popup: 'meu-swal',
-				title: 'meu-titulo-pequeno'
+				title: 'meu-titulo-pequeno',
 			},
 			footer: '* Clique em cada palavra isoladamente para ver sua tradução.',
 			confirmButtonColor: '#3085d6',
 			didClose: () => {
 				unmount(app);
-			}
+			},
 		});
 	}
 </script>

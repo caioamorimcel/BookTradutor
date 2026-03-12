@@ -7,7 +7,7 @@ import * as v from 'valibot';
 const schema = v.object({
 	edicao: v.string(),
 	pagina: v.string(),
-	saga: v.optional(v.string())
+	saga: v.optional(v.string()),
 });
 
 export const funcaoLerTotalDePaginas = query(schema, async ({ edicao, pagina, saga }) => {

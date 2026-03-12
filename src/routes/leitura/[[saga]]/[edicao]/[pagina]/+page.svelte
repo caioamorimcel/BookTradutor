@@ -18,7 +18,7 @@
 		popupY,
 		totalDePaginas,
 		traducao,
-		voz
+		voz,
 	} from './estados.svelte.js';
 	import { funcaoAbrirPopup } from './funcaoAbrirPopup.js';
 	import { funcaoFecharAoClicarFora } from './funcaoFecharAoClicarFora.js';
@@ -34,10 +34,10 @@
 	// DERIVEDS
 	const paginaAtual = $derived(parseInt(page.params.pagina ?? '1'));
 	const derivedTransitionIn = $derived(
-		page.url.searchParams.get('direction') === 'next' ? '100%' : '-100%'
+		page.url.searchParams.get('direction') === 'next' ? '100%' : '-100%',
 	);
 	const derivedTransitionOut = $derived(
-		page.url.searchParams.get('direction') === 'next' ? '-100%' : '100%'
+		page.url.searchParams.get('direction') === 'next' ? '-100%' : '100%',
 	);
 	const derivedSaga = $derived(page.params.saga ? `${page.params.saga}/` : '');
 	/////
@@ -47,12 +47,12 @@
 			totalDePaginas.value = await funcaoLerTotalDePaginas({
 				edicao: page.params.edicao ?? '1',
 				pagina: page.params.pagina ?? '1',
-				saga: page.params.saga
+				saga: page.params.saga,
 			});
 			baloes.value = await funcaoLerBaloes({
 				edicao: page.params.edicao ?? '1',
 				pagina: page.params.pagina ?? '1',
-				saga: page.params.saga
+				saga: page.params.saga,
 			});
 		})();
 	});
@@ -85,8 +85,8 @@
 			paginaAtual > 1 &&
 			goto(
 				resolve(
-					`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual - 1}?direction=previous`
-				)
+					`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual - 1}?direction=previous`,
+				),
 			)}
 	>
 		VOLTAR
@@ -112,7 +112,7 @@
 		onclick={() =>
 			paginaAtual < totalDePaginas.value &&
 			goto(
-				resolve(`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual + 1}?direction=next`)
+				resolve(`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual + 1}?direction=next`),
 			)}
 	>
 		AVANÇAR
@@ -124,11 +124,11 @@
 		<img
 			in:transitionIn|global={{
 				parType:
-					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly'
+					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly',
 			}}
 			out:transitionOut={{
 				parType:
-					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly'
+					page.url.searchParams.get('direction') === null ? 'transitionFade' : 'transitionFly',
 			}}
 			ontouchstart={arrastar.handleTouchStart}
 			ontouchend={arrastar.handleTouchEnd}

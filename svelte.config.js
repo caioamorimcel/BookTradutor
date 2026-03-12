@@ -9,16 +9,16 @@ const config = {
 		adapter: adapter(),
 		// ADICIONADO POR MIM
 		experimental: {
-			remoteFunctions: true
-		}
+			remoteFunctions: true,
+		},
 		/////
 	},
 	// ADICIONADO POR MIM
 	compilerOptions: {
 		experimental: {
-			async: true
-		}
-	}
+			async: true,
+		},
+	},
 	/////
 };
 

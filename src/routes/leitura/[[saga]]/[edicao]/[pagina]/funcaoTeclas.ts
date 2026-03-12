@@ -16,16 +16,16 @@ export function funcaoTeclas(e: KeyboardEvent) {
 		case 'ArrowLeft':
 			goto(
 				resolve(
-					`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`
-				)
+					`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`,
+				),
 			);
 
 			break;
 		case 'ArrowRight':
 			goto(
 				resolve(
-					`/leitura/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`
-				)
+					`/leitura/${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`,
+				),
 			);
 			break;
 	}

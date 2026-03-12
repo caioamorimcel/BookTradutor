@@ -9,7 +9,7 @@
 
 	let {
 		show = false,
-		onhide
+		onhide,
 	}: {
 		show: boolean;
 		onhide: () => void;

@@ -5,7 +5,9 @@
 	// import MovieSection from '$components/templates/MovieSection.svelte';
 	// import CastSection from '$components/templates/CastSection.svelte';
 	// import MovieDetailHero from '$components/elements/MovieDetailHero.svelte';
-	import { funcaoCarregarDadosDasRevistas } from './funcaoCarregarDadosDaSaga.remote';
+	import Revista from '$lib/componentes/Revista.svelte';
+	import { funcaoCarregarDadosDaSaga } from './funcaoCarregarDadosDaSaga.remote';
+	import { funcaoCarregarDadosDasRevistas } from './funcaoCarregarDadosDasRevistas.remote';
 	// export let movie, similar, credits, providers;
 
 	// import type { typeDados } from '$lib/types/typeDados';
@@ -19,9 +21,14 @@
 	// });
 
 	const saga = $derived(
+		await funcaoCarregarDadosDaSaga({
+			saga: page.params.saga ?? '',
+		}),
+	);
+	const revistas = $derived(
 		await funcaoCarregarDadosDasRevistas({
-			saga: page.params.saga ?? ''
-		})
+			saga: page.params.saga ?? '',
+		}),
 	);
 </script>
 
@@ -29,20 +36,29 @@
 	<title>{saga.titulo}</title>
 </svelte:head>
 
-<div>
-	<div class="bg-slate-500">
-		<div class="container">
-			<Banner {saga} />
-		</div>
-	</div>
-	<div></div>
+<div class="bg-slate-500">
 	<div class="container">
-		<div class="mt-4">
-			<!-- <CastSection collection={credits.cast} /> -->
-		</div>
+		<Banner {saga} />
+	</div>
+</div>
+<div></div>
+<div class="container">
+	<div class="mt-4">
+		<!-- <CastSection collection={credits.cast} /> -->
+	</div>
 
-		<h2 class="my-4">Similar Movies</h2>
-		<!-- <MovieSection collection={similar} /> -->
+	<h2 class="my-4">Similar Movies</h2>
+	<!-- <MovieSection collection={similar} /> -->
+</div>
+
+<div class="container mt-2 mb-7">
+	<h2 class="text-2xl font-bold text-gray-dark sm:text-3xl dark:text-gray-light">REVISTAS</h2>
+	<div class="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+		{#each revistas as revista (revista.pasta)}
+			<!-- <div in:fade={{ duration: 300, delay: index * 100 }}> -->
+			<Revista {revista} transicao={true} />
+			<!-- </div> -->
+		{/each}
 	</div>
 </div>
 

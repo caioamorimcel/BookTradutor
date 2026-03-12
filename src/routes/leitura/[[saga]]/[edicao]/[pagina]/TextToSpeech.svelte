@@ -4,7 +4,7 @@
 	import { voz } from './estados.svelte';
 
 	let {
-		texto
+		texto,
 	}: {
 		texto: string;
 	} = $props();

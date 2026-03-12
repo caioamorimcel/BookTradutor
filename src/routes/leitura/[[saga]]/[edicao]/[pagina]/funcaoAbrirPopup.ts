@@ -9,7 +9,7 @@ import {
 	popupVisivel,
 	popupX,
 	popupY,
-	traducao
+	traducao,
 } from './estados.svelte';
 
 export async function funcaoAbrirPopup(event: MouseEvent, balao: Balao, indice: number) {

@@ -17,6 +17,6 @@ export function funcao(inicial = 0) {
 			estado.value = v;
 		},
 		aumentar,
-		diminuir
+		diminuir,
 	};
 }

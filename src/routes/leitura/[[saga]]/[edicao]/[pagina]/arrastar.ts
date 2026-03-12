@@ -19,16 +19,16 @@ export function handleTouchEnd(e: TouchEvent) {
 	if (distance > 50) {
 		goto(
 			resolve(
-				`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`
-			)
+				`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') - 1}?direction=previous`,
+			),
 		);
 	}
 
 	if (distance < -50) {
 		goto(
 			resolve(
-				`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`
-			)
+				`/leitura/${saga}${page.params.edicao}/${parseInt(page.params.pagina ?? '1') + 1}?direction=next`,
+			),
 		);
 	}
 }

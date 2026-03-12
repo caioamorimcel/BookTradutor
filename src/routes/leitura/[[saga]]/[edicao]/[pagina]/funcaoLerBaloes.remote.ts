@@ -5,7 +5,7 @@ import * as v from 'valibot';
 const schema = v.object({
 	pagina: v.string(),
 	edicao: v.string(),
-	saga: v.optional(v.string())
+	saga: v.optional(v.string()),
 });
 
 export const funcaoLerBaloes = query(schema, async ({ pagina, edicao, saga }): Promise<Balao[]> => {

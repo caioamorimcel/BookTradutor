@@ -4,14 +4,14 @@ const baseUrl = variables.movieUrl;
 // Apply all headers
 const headers = {
 	Accept: 'application/json',
-	Authorization: `Bearer ${variables.movieToken}`
+	Authorization: `Bearer ${variables.movieToken}`,
 };
 
 export const movies = {
 	getDiscover: async () => {
 		try {
 			return await fetch(`${baseUrl}/discover/movie`, {
-				headers
+				headers,
 			});
 		} catch (err) {
 			return err;
@@ -20,7 +20,7 @@ export const movies = {
 	getUpcoming: async () => {
 		try {
 			return await fetch(`${baseUrl}/movie/upcoming`, {
-				headers
+				headers,
 			});
 		} catch (err) {
 			return err;
@@ -29,7 +29,7 @@ export const movies = {
 	getDetail: async (id: string) => {
 		try {
 			return await fetch(`${baseUrl}/movie/${id}`, {
-				headers
+				headers,
 			});
 		} catch (err) {
 			return err;
@@ -38,7 +38,7 @@ export const movies = {
 	getSimilar: async (id: string) => {
 		try {
 			return await fetch(`${baseUrl}/movie/${id}/similar`, {
-				headers
+				headers,
 			});
 		} catch (err) {
 			return err;
@@ -47,7 +47,7 @@ export const movies = {
 	getCredits: async (id: string) => {
 		try {
 			return await fetch(`${baseUrl}/movie/${id}/credits`, {
-				headers
+				headers,
 			});
 		} catch (err) {
 			return err;
@@ -57,7 +57,7 @@ export const movies = {
 		try {
 			alert(baseUrl);
 			return await fetch(`${baseUrl}/search/movie?query=${q}&include_adult=false`, {
-				headers
+				headers,
 			});
 		} catch (err) {
 			return err;
@@ -66,12 +66,12 @@ export const movies = {
 	getProviders: async (id: string) => {
 		try {
 			return await fetch(`${baseUrl}/movie/${id}/watch/providers`, {
-				headers
+				headers,
 			});
 		} catch (err) {
 			return err;
 		}
-	}
+	},
 };
 
 export default movies;

@@ -8,7 +8,7 @@
 	const url = $derived(
 		(revista.saga ? `/flix/${revista.pasta}` : `/leitura/${revista.pasta}/1`) as
 			| `/flix/${string}`
-			| `/leitura/${string}/1`
+			| `/leitura/${string}/1`,
 	);
 </script>
 
@@ -35,7 +35,7 @@
 		></div>
 
 		<img
-			class="bg-light h-80 w-full object-cover object-center transition-all duration-200 group-hover:scale-105 sm:h-128"
+			class="bg-light h-80 w-full object-cover object-center transition-all duration-200 group-hover:scale-105 sm:h-80"
 			src={revista.banner}
 			alt="poster"
 		/>
