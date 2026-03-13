@@ -5,7 +5,8 @@
 	import { tick } from 'svelte';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
-	// import Movie from '../Movie';
+	import { funcaoCarregarDadosDasRevistas } from './funcaoCarregarDadosDasRevistas.remote';
+	import { funcaoPesquisar } from './funcaoPesquisar';
 
 	let {
 		show = false,
@@ -19,12 +20,14 @@
 	let searchVal = $state<string | null>(null);
 	let timer: string | number | NodeJS.Timeout | undefined;
 
-	let response = $state<typeDados[]>([]);
+	let resultadoDaPesquisa = $state<typeDados[]>([]);
+
+	let todasRevistas = $state<typeDados[]>([]);
 
 	const reset = async () => {
 		await tick();
 		searchVal = null;
-		response = [];
+		resultadoDaPesquisa = [];
 	};
 
 	const hide = () => {
@@ -44,10 +47,13 @@
 		}
 	};
 
-	const handleClick = (movie: typeDados) => {
+	const handleClick = (revista: typeDados) => {
 		hide();
-		// goto(resolve(`/${movie.id}`));
-		goto(resolve(`/`));
+		const url = (revista.saga ? `/flix/${revista.pasta}` : `/leitura/${revista.pasta}/1`) as
+			| `/flix/${string}`
+			| `/leitura/${string}/1`;
+
+		goto(resolve(url));
 	};
 
 	const debounce = (v: string) => {
@@ -55,22 +61,25 @@
 
 		timer = setTimeout(async () => {
 			pending = true;
-
+			if (todasRevistas.length === 0) {
+				todasRevistas = await funcaoCarregarDadosDasRevistas();
+			}
+			resultadoDaPesquisa = funcaoPesquisar({
+				data: todasRevistas,
+				string: searchVal ?? '',
+				keys: ['titulo', 'descricao'],
+			});
 			// const res = await Movie.getSearch(v);
-			// response = await res.json();
-
+			// resultadoDaPesquisa = await res.json();
 			pending = false;
 		}, 750);
 	};
 
-	// const getYear = (date: string) => {
-	// 	const d = new Date(date);
-	// 	return d.getFullYear();
-	// };
-
 	$effect(() => {
 		if (searchVal) {
 			debounce(searchVal);
+		} else {
+			resultadoDaPesquisa = [];
 		}
 	});
 
@@ -83,14 +92,14 @@
 
 {#if show}
 	<div
-		class="fixed inset-0 z-10 overflow-y-auto px-1 pt-16 sm:p-6 md:p-20"
+		class="fixed inset-0 z-10 overflow-y-auto bg-slate-500/80 px-1 pt-16 sm:p-6 md:p-20 dark:bg-white/50"
 		role="dialog"
 		aria-modal="true"
 	>
 		<div
 			in:fade={{ duration: 200 }}
 			out:fade
-			class="bg-opacity-75 dark:bg-opacity-90 fixed inset-0 bg-transparent transition-opacity"
+			class="fixed inset-0 transition-opacity"
 			aria-hidden="true"
 			onclick={hide}
 		></div>
@@ -98,7 +107,7 @@
 		<div
 			in:fly={{ y: 15, duration: 300, easing: sineInOut }}
 			out:fade
-			class="divide-opacity-10 ring-opacity-10 dark:ring-opacity-5 mx-auto max-w-xl transform divide-y divide-gray-dark overflow-hidden rounded-xl bg-gray-light shadow-2xl ring-2 ring-gray-light transition-all dark:divide-gray-light dark:bg-gray-dark dark:shadow-none dark:ring-gray-light"
+			class="divide-gray/10 dark:bg-dark dark:ring-gray/5 mx-auto max-w-xl transform divide-y overflow-hidden rounded-xl bg-white shadow-2xl ring-2 ring-white/10 transition-all dark:shadow-none"
 		>
 			<div class="relative">
 				{#if pending}
@@ -112,10 +121,11 @@
 				{:else}
 					<div in:fade>
 						<svg
-							class="text-gray pointer-events-none absolute top-3.5 left-4 h-5 w-5 dark:text-gray-light"
+							class="text-gray pointer-events-none absolute top-3.5 left-4 h-5 w-5"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 20 20"
 							fill="currentColor"
+							aria-hidden="true"
 						>
 							<path
 								fill-rule="evenodd"
@@ -128,31 +138,37 @@
 
 				<input
 					type="text"
-					class="h-12 w-full border-0 bg-transparent pr-4 pl-11 text-gray-dark placeholder-gray-400 focus:ring-0 sm:text-sm dark:text-gray-light"
+					class="text-gray h-12 w-full border-0 bg-transparent pr-4 pl-11 placeholder-gray-400 focus:ring-0 sm:text-sm"
 					placeholder="Search..."
+					role="combobox"
+					aria-expanded="false"
+					aria-controls="options"
 					bind:value={searchVal}
 					use:init
 				/>
 			</div>
 
-			{#if response.length}
+			{#if resultadoDaPesquisa.length}
 				<ul
-					class="text-gray divide-gray divide-opacity-10 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-primary scrollbar-track-light max-h-72 scroll-py-2 divide-y overflow-y-auto py-2 text-sm"
+					class="text-gray divide-gray/10 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-primary scrollbar-track-light max-h-72 scroll-py-2 divide-y overflow-y-auto py-2 text-sm"
+					id="options"
+					role="listbox"
 				>
-					{#each response as revista, index (index)}
+					{#each resultadoDaPesquisa as revista, index (index)}
+						<!-- svelte-ignore a11y_role_has_required_aria_props -->
 						<!-- svelte-ignore a11y_click_events_have_key_events -->
-						<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 						<li
 							in:fade={{ duration: 300, delay: index * 100 }}
-							class="group hover:bg-gray hover:text-dark dark:hover:text-light hover:bg-opacity-10 flex cursor-pointer items-center space-x-2 px-4 py-2 transition-all select-none hover:text-white"
+							class="group hover:bg-gray/10 hover:text-dark dark:hover:text-light flex cursor-pointer items-center space-x-2 px-4 py-2 transition-all select-none hover:text-white"
+							id="option-{index + 1}"
+							role="option"
+							tabindex="-1"
 							onclick={() => handleClick(revista)}
 						>
 							<div class="hidden shrink-0 sm:inline-block">
 								<img
 									class="w-10 object-cover object-bottom sm:w-16"
-									src={revista?.capa
-										? `https://image.tmdb.org/t/p/w500${revista.capa}`
-										: '/img/mesh.png'}
+									src={revista.capa ? revista.capa : '/img/mesh.png'}
 									alt="poster"
 									onerror={(ev) => ((ev.target as HTMLImageElement).src = '/img/mesh.png')}
 								/>
@@ -160,7 +176,10 @@
 
 							<div class="flex-1">
 								<div class="text-lg font-semibold">{revista.titulo}</div>
-								<div class="hidden sm:line-clamp-3">{revista.titulo}</div>
+
+								<div class="hidden sm:line-clamp-3">
+									{revista.descricao}
+								</div>
 
 								{#if revista.ano}
 									<div class="text-xs sm:mt-2">
@@ -171,8 +190,8 @@
 						</li>
 					{/each}
 				</ul>
-			{:else if response.length === 0}
-				<p class="p-4 text-center text-sm text-gray-dark dark:text-gray-light">No movie found.</p>
+			{:else if resultadoDaPesquisa.length === 0}
+				<p class="text-gray p-4 text-center text-sm">No movie found.</p>
 			{/if}
 		</div>
 	</div>
