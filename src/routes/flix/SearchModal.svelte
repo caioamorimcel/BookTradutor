@@ -99,7 +99,7 @@
 		<div
 			in:fade={{ duration: 200 }}
 			out:fade
-			class="fixed inset-0 transition-opacity"
+			class="fixed inset-0 z-0 transition-opacity"
 			aria-hidden="true"
 			onclick={hide}
 		></div>
@@ -107,7 +107,7 @@
 		<div
 			in:fly={{ y: 15, duration: 300, easing: sineInOut }}
 			out:fade
-			class="divide-gray/10 dark:bg-dark dark:ring-gray/5 mx-auto max-w-xl transform divide-y overflow-hidden rounded-xl bg-white shadow-2xl ring-2 ring-white/10 transition-all dark:shadow-none"
+			class="divide-gray/10 dark:bg-dark dark:ring-gray/5 relative z-10 mx-auto max-w-xl transform divide-y overflow-hidden rounded-xl bg-white shadow-2xl ring-2 ring-white/10 transition-all dark:shadow-none"
 		>
 			<div class="relative">
 				{#if pending}
@@ -139,7 +139,7 @@
 				<input
 					type="text"
 					class="text-gray h-12 w-full border-0 bg-transparent pr-4 pl-11 placeholder-gray-400 focus:ring-0 sm:text-sm"
-					placeholder="Search..."
+					placeholder="PESQUISAR..."
 					role="combobox"
 					aria-expanded="false"
 					aria-controls="options"
@@ -159,7 +159,7 @@
 						<!-- svelte-ignore a11y_click_events_have_key_events -->
 						<li
 							in:fade={{ duration: 300, delay: index * 100 }}
-							class="group hover:bg-gray/10 hover:text-dark dark:hover:text-light flex cursor-pointer items-center space-x-2 px-4 py-2 transition-all select-none hover:text-white"
+							class="group hover:bg-gray/10 hover:text-dark dark:hover:text-light flex cursor-pointer items-center space-x-2 px-4 py-2 transition-all select-none"
 							id="option-{index + 1}"
 							role="option"
 							tabindex="-1"
@@ -191,7 +191,7 @@
 					{/each}
 				</ul>
 			{:else if resultadoDaPesquisa.length === 0}
-				<p class="text-gray p-4 text-center text-sm">No movie found.</p>
+				<p class="text-gray p-4 text-center text-sm">NENHUMA REVISTA ENCONTRADA.</p>
 			{/if}
 		</div>
 	</div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Clock, Icon, Link } from 'svelte-hero-icons';
 	// import ProviderSection from '$components/templates/ProviderSection.svelte';
+	import { resolve } from '$app/paths';
 	import Rating from '$lib/componentes/Rating.svelte';
 	import type { typeDados } from '$lib/types/typeDados';
 
@@ -25,16 +26,23 @@
 </script>
 
 <div class="items-top bg-dark z-20 px-2 py-6 text-white sm:flex sm:space-x-4 sm:px-0">
-	<img
-		class="mt-1 h-48 sm:h-56"
+	<a
+		class="group relative block shrink-0"
+		href={resolve(`/leitura/${saga.pasta}/1/1`)}
 		style={`view-transition-name: revista-${saga.pasta}`}
-		src={saga.banner}
-		alt="poster"
-		onerror={(ev) => {
-			const img = ev.currentTarget as HTMLImageElement;
-			img.src = '/img/mesh.png';
-		}}
-	/>
+	>
+		<img class="mt-1 h-48 w-32 object-cover sm:h-56 sm:w-40" src={saga.banner} alt="poster" />
+
+		<!-- Overlay -->
+		<div class="absolute inset-0 flex items-center justify-center">
+			<div class="rounded-full bg-black/50 p-3 opacity-70 transition group-hover:opacity-100">
+				<svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M8 5v14l11-7z" />
+				</svg>
+			</div>
+		</div>
+	</a>
+
 	<div class="dark:text-light flex flex-col">
 		<div class="mt-4 text-sm sm:mt-0">
 			{#if saga.editora}

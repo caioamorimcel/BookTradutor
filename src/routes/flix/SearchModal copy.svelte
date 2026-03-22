@@ -162,7 +162,9 @@
 					{/each}
 				</ul>
 			{:else if response.length === 0}
-				<p class="p-4 text-center text-sm text-gray-dark dark:text-gray-light">No movie found.</p>
+				<p class="p-4 text-center text-sm text-gray-dark dark:text-gray-light">
+					NENHUMA REVISTA ENCONTRADA.
+				</p>
 			{/if}
 		</div>
 	</div>
