@@ -1,0 +1,47 @@
+[
+    {
+        "x1": 157,
+        "y1": 217,
+        "x2": 460,
+        "y2": 403,
+        "en": "WHERE IS YOUR LIGHTSABER, LORD VADER? USE ITS POWER! DEFEND YOURSELF!",
+        "ptbr": "",
+        "ptbrpp": ""
+    },
+    {
+        "x1": 343,
+        "y1": 971,
+        "x2": 575,
+        "y2": 1110,
+        "en": "LOST. IN THE FIGHT WITH... OBI-WAN. HE... TOOK IT.",
+        "ptbr": "",
+        "ptbrpp": ""
+    },
+    {
+        "x1": 139,
+        "y1": 1449,
+        "x2": 419,
+        "y2": 1632,
+        "en": "NO!",
+        "ptbr": "",
+        "ptbrpp": ""
+    },
+    {
+        "x1": 455,
+        "y1": 1858,
+        "x2": 806,
+        "y2": 2016,
+        "en": "THAT BLADE BELONGED TO ANOTHER. A JEDI.",
+        "ptbr": "",
+        "ptbrpp": ""
+    },
+    {
+        "x1": 1505,
+        "y1": 2564,
+        "x2": 1661,
+        "y2": 2689,
+        "en": "YOU ARE A SITH.",
+        "ptbr": "",
+        "ptbrpp": ""
+    }
+]
