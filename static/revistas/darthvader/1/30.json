@@ -1,0 +1,123 @@
+[
+    {
+        "x1": 107,
+        "y1": 118,
+        "x2": 452,
+        "y2": 271,
+        "en": [
+            "CONTINUE",
+            "TO",
+            "PREPARE",
+            "MY",
+            "CHAMBER,",
+            "I",
+            "WANT",
+            "NO",
+            "MORE",
+            "INTERRUPTIONS."
+        ],
+        "ptbr": [
+            "CONTINUE",
+            "A",
+            "PREPARAR",
+            "MINHA",
+            "CÂMARA,",
+            "NÃO",
+            "QUERO",
+            "MAIS",
+            "INTERRUPÇÕES."
+        ],
+        "ptbrpp": [
+            "CONTINUAR",
+            "PARA",
+            "PREPARAR",
+            "MEU",
+            "CÂMARA,",
+            "EU",
+            "QUERER",
+            "NÃO",
+            "MAIS",
+            "INTERRUPÇÕES."
+        ]
+    },
+    {
+        "x1": 156,
+        "y1": 1130,
+        "x2": 348,
+        "y2": 1256,
+        "en": [
+            "LORD",
+            "VADER,",
+            "IF",
+            "I",
+            "MAY..."
+        ],
+        "ptbr": [
+            "Lorde",
+            "Vader,",
+            "se",
+            "eu",
+            "puder..."
+        ],
+        "ptbrpp": [
+            "SENHOR",
+            "VADER,",
+            "SE",
+            "EU",
+            "PODERIA..."
+        ]
+    },
+    {
+        "x1": 942,
+        "y1": 2125,
+        "x2": 1188,
+        "y2": 2239,
+        "en": [
+            "WE",
+            "HAVE",
+            "A",
+            "SLIGHT",
+            "PROBLEM."
+        ],
+        "ptbr": [
+            "TEMOS",
+            "UM",
+            "PEQUENO",
+            "PROBLEMA."
+        ],
+        "ptbrpp": [
+            "NÓS",
+            "TER",
+            "UM",
+            "POUCO",
+            "PROBLEMA."
+        ]
+    },
+    {
+        "x1": 1056,
+        "y1": 2443,
+        "x2": 1266,
+        "y2": 2555,
+        "en": [
+            "WE",
+            "DO",
+            "NOT",
+            "HAVE",
+            "A",
+            "PROBLEM."
+        ],
+        "ptbr": [
+            "NÃO",
+            "TEMOS",
+            "PROBLEMA."
+        ],
+        "ptbrpp": [
+            "NÓS",
+            "FAZER",
+            "NÃO",
+            "TER",
+            "UM",
+            "PROBLEMA."
+        ]
+    }
+]

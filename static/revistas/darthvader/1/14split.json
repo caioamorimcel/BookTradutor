@@ -1,0 +1,190 @@
+[
+    {
+        "x1": 911,
+        "y1": 465,
+        "x2": 1072,
+        "y2": 582,
+        "en": [
+            "THUS",
+            "TYRANNY",
+            "ENDS!"
+        ],
+        "ptbr": [
+            "ASSIM",
+            "TERMINA",
+            "A",
+            "TIRANIA!"
+        ],
+        "ptbrpp": [
+            "ASSIM",
+            "TERMINA",
+            "A",
+            "TIRANIA!"
+        ]
+    },
+    {
+        "x1": 343,
+        "y1": 1331,
+        "x2": 550,
+        "y2": 1462,
+        "en": [
+            "DO",
+            "YOU",
+            "UNDERSTAND,",
+            "LORD",
+            "VADER?"
+        ],
+        "ptbr": [
+            "VOCÊ",
+            "ENTENDE,",
+            "SENHOR",
+            "VADER?"
+        ],
+        "ptbrpp": [
+            "VOCÊ",
+            "ENTENDE,",
+            "SENHOR",
+            "VADER?"
+        ]
+    },
+    {
+        "x1": 881,
+        "y1": 1320,
+        "x2": 1188,
+        "y2": 1514,
+        "en": [
+            "YES.",
+            "YOU",
+            "COULD",
+            "HAVE",
+            "GIVEN",
+            "ME",
+            "ANY",
+            "ONE",
+            "OF",
+            "THOSE",
+            "LIGHTSABERS",
+            "TO",
+            "CORRUPT,",
+            "EVEN",
+            "YODA’S."
+        ],
+        "ptbr": [
+            "SIM.",
+            "VOCÊ",
+            "PODERIA",
+            "TER",
+            "ME",
+            "DADO",
+            "QUALQUER",
+            "UM",
+            "DESSES",
+            "SABRES",
+            "DE",
+            "LUZ",
+            "PARA",
+            "CORROMPER,",
+            "ATÉ",
+            "O",
+            "DE",
+            "YODA."
+        ],
+        "ptbrpp": [
+            "SIM.",
+            "VOCÊ",
+            "PODERIA",
+            "TER",
+            "ME",
+            "DADO",
+            "QUALQUER",
+            "UM",
+            "DESSES",
+            "SABRES",
+            "DE",
+            "LUZ",
+            "PARA",
+            "CORROMPER,",
+            "ATÉ",
+            "O",
+            "DE",
+            "YODA."
+        ]
+    },
+    {
+        "x1": 1001,
+        "y1": 1523,
+        "x2": 1176,
+        "y2": 1602,
+        "en": [
+            "BUT",
+            "YOU",
+            "DID",
+            "NOT."
+        ],
+        "ptbr": [
+            "MAS",
+            "VOCÊ",
+            "NÃO."
+        ],
+        "ptbrpp": [
+            "MAS",
+            "VOCÊ",
+            "NÃO."
+        ]
+    },
+    {
+        "x1": 1169,
+        "y1": 1934,
+        "x2": 1366,
+        "y2": 2050,
+        "en": [
+            "THE",
+            "SABER",
+            "OF",
+            "A",
+            "SITH",
+            "IS",
+            "NOT",
+            "GIVEN."
+        ],
+        "ptbr": [
+            "O",
+            "SABRE",
+            "DE",
+            "UM",
+            "SITH",
+            "NÃO",
+            "É",
+            "DADO."
+        ],
+        "ptbrpp": [
+            "O",
+            "SABRE",
+            "DE",
+            "UM",
+            "SITH",
+            "NÃO",
+            "É",
+            "DADO."
+        ]
+    },
+    {
+        "x1": 1640,
+        "y1": 2690,
+        "x2": 1774,
+        "y2": 2777,
+        "en": [
+            "IT",
+            "IS",
+            "TAKEN."
+        ],
+        "ptbr": [
+            "É",
+            "TOMADO."
+        ],
+        "ptbrpp": [
+            "É",
+            "TOMADO."
+        ]
+    }
+]
