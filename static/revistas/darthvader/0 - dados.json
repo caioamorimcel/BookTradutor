@@ -1,0 +1,10 @@
+{
+	"titulo":"STAR WARS - DARTH VADER",
+	"capa":"/revistas/darthvader/1/1.jpg",
+	"rating":9,
+	"banner": "/revistas/darthvader/1/1.jpg",
+	"pasta": "darthvader",
+	"saga": true,
+	"editora": "MARVEL",
+	"descricao":"Releitura radical do mito do Batman, mantendo a essência do personagem enquanto altera elementos fundamentais de sua origem, ambiente e personalidade. Diferente da versão clássica do herói, esta versão enfatiza um Batman mais físico, brutal e próximo das ruas, focado em sobrevivência e justiça direta."
+}

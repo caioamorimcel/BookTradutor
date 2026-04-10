@@ -1,0 +1,99 @@
+[
+    {
+        "x1": 149,
+        "y1": 131,
+        "x2": 419,
+        "y2": 208,
+        "en": [
+            "SURROUNDED",
+            "BY",
+            "INCOMPETENTS."
+        ],
+        "ptbr": [
+            "CERCADO",
+            "DE",
+            "INCOMPETENTES."
+        ],
+        "ptbrpp": [
+            "CERCADO",
+            "DE",
+            "INCOMPETENTES."
+        ]
+    },
+    {
+        "x1": 423,
+        "y1": 178,
+        "x2": 672,
+        "y2": 312,
+        "en": [
+            "YOU",
+            "ARE",
+            "THE",
+            "ONLY",
+            "ONE",
+            "WHO",
+            "HAS",
+            "NOT",
+            "TESTED",
+            "MY",
+            "IRE."
+        ],
+        "ptbr": [
+            ""
+        ],
+        "ptbrpp": [
+            ""
+        ]
+    },
+    {
+        "x1": 1699,
+        "y1": 1439,
+        "x2": 1814,
+        "y2": 1522,
+        "en": [
+            "UNTIL",
+            "NOW."
+        ],
+        "ptbr": [
+            ""
+        ],
+        "ptbrpp": [
+            "ATÉ",
+            "AGORA."
+        ]
+    },
+    {
+        "x1": 1087,
+        "y1": 2073,
+        "x2": 1193,
+        "y2": 2151,
+        "en": [
+            "AT",
+            "LAST."
+        ],
+        "ptbr": [
+            "AFINAL."
+        ],
+        "ptbrpp": [
+            "AFINAL."
+        ]
+    },
+    {
+        "x1": 1647,
+        "y1": 2871,
+        "x2": 1908,
+        "y2": 2961,
+        "en": [
+            "THE",
+            "END."
+        ],
+        "ptbr": [
+            "O",
+            "FIM."
+        ],
+        "ptbrpp": [
+            "O",
+            "FIM."
+        ]
+    }
+]

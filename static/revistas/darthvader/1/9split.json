@@ -1,0 +1,156 @@
+[
+    {
+        "x1": 157,
+        "y1": 217,
+        "x2": 460,
+        "y2": 403,
+        "en": [
+            "WHERE",
+            "IS",
+            "YOUR",
+            "LIGHTSABER,",
+            "LORD",
+            "VADER?",
+            "USE",
+            "ITS",
+            "POWER!",
+            "DEFEND",
+            "YOURSELF!"
+        ],
+        "ptbr": [
+            "ONDE",
+            "ESTÁ",
+            "SEU",
+            "SABRE",
+            "DE",
+            "LUZ,",
+            "SENHOR",
+            "VADER?",
+            "USE",
+            "SEU",
+            "PODER!",
+            "DEFENDA-SE!"
+        ],
+        "ptbrpp": [
+            "ONDE",
+            "ESTÁ",
+            "SEU",
+            "SABRE",
+            "DE",
+            "LUZ,",
+            "SENHOR",
+            "VADER?",
+            "USE",
+            "SEU",
+            "PODER!",
+            "DEFENDA-SE!"
+        ]
+    },
+    {
+        "x1": 343,
+        "y1": 971,
+        "x2": 575,
+        "y2": 1110,
+        "en": [
+            "LOST.",
+            "IN",
+            "THE",
+            "FIGHT",
+            "WITH...",
+            "OBI-WAN.",
+            "HE...",
+            "TOOK",
+            "IT."
+        ],
+        "ptbr": [
+            "PERDIDO.",
+            "NA",
+            "LUTA",
+            "COM...",
+            "OBI-WAN.",
+            "ELE...",
+            "PEGOU."
+        ],
+        "ptbrpp": [
+            "PERDIDO.",
+            "NA",
+            "LUTA",
+            "COM...",
+            "OBI-WAN.",
+            "ELE...",
+            "PEGOU."
+        ]
+    },
+    {
+        "x1": 139,
+        "y1": 1449,
+        "x2": 419,
+        "y2": 1632,
+        "en": [
+            "NO!"
+        ],
+        "ptbr": [
+            "NÃO!"
+        ],
+        "ptbrpp": [
+            "NÃO!"
+        ]
+    },
+    {
+        "x1": 455,
+        "y1": 1858,
+        "x2": 806,
+        "y2": 2016,
+        "en": [
+            "THAT",
+            "BLADE",
+            "BELONGED",
+            "TO",
+            "ANOTHER.",
+            "A",
+            "JEDI."
+        ],
+        "ptbr": [
+            "ESSA",
+            "LÂMINA",
+            "PERTENCEU",
+            "A",
+            "OUTRO.",
+            "UM",
+            "JEDI."
+        ],
+        "ptbrpp": [
+            "ESSA",
+            "LÂMINA",
+            "PERTENCEU",
+            "A",
+            "OUTRO.",
+            "UM",
+            "JEDI."
+        ]
+    },
+    {
+        "x1": 1505,
+        "y1": 2564,
+        "x2": 1661,
+        "y2": 2689,
+        "en": [
+            "YOU",
+            "ARE",
+            "A",
+            "SITH."
+        ],
+        "ptbr": [
+            "VOCÊ",
+            "É",
+            "UM",
+            "SITH."
+        ],
+        "ptbrpp": [
+            "VOCÊ",
+            "É",
+            "UM",
+            "SITH."
+        ]
+    }
+]

@@ -1,0 +1,65 @@
+[
+    {
+        "x1": 868,
+        "y1": 207,
+        "x2": 1100,
+        "y2": 296,
+        "en": "APOLOGIES, LORD VADER.",
+        "ptbr": "DESCULPAS, SENHOR VADER.",
+        "ptbrpp": "DESCULPAS, SENHOR VADER."
+    },
+    {
+        "x1": 865,
+        "y1": 497,
+        "x2": 1043,
+        "y2": 576,
+        "en": "WHAT IS IT, GENERAL?",
+        "ptbr": "O QUE É, GERAL?",
+        "ptbrpp": "O QUE É, GERAL?"
+    },
+    {
+        "x1": 1273,
+        "y1": 1168,
+        "x2": 1576,
+        "y2": 1349,
+        "en": "WE ARE UNABLE TO DEPLOY SHIPS TO THE HORTOLO SYSTEM BY YOUR DEADLINE, SIR.",
+        "ptbr": "NÃO PODEMOS IMPLEMENTAR NAVIOS PARA O SISTEMA HORTOLO NO SEU PRAZO, SENHOR.",
+        "ptbrpp": "NÃO PODEMOS IMPLEMENTAR NAVIOS PARA O SISTEMA HORTOLO NO SEU PRAZO, SENHOR."
+    },
+    {
+        "x1": 1281,
+        "y1": 1359,
+        "x2": 1610,
+        "y2": 1509,
+        "en": "GATHERING THE PROPER DIVISIONS HAS TAKEN LONGER THAN EXPECTED.",
+        "ptbr": "REUNIR AS DIVISÕES ADEQUADAS DEMOROU MAIS DO QUE O ESPERADO.",
+        "ptbrpp": "REUNIR AS DIVISÕES ADEQUADAS DEMOROU MAIS DO QUE O ESPERADO."
+    },
+    {
+        "x1": 1319,
+        "y1": 1522,
+        "x2": 1595,
+        "y2": 1639,
+        "en": "OUR SHIPS ARE SCATTERED THROUGH--",
+        "ptbr": "NOSSOS NAVIOS ESTÃO ESPALHADOS -",
+        "ptbrpp": "NOSSOS NAVIOS ESTÃO ESPALHADOS -"
+    },
+    {
+        "x1": 693,
+        "y1": 2075,
+        "x2": 975,
+        "y2": 2235,
+        "en": "I GROW TIRED OF YOUR INCOMPETENCE, ADMIRAL MUMMERT--",
+        "ptbr": "ESTOU CANSADO DA SUA INCOMPETÊNCIA, ALMIRAL MUMMERT...",
+        "ptbrpp": "ESTOU CANSADO DA SUA INCOMPETÊNCIA, ALMIRAL MUMMERT..."
+    },
+    {
+        "x1": 874,
+        "y1": 2245,
+        "x2": 1080,
+        "y2": 2378,
+        "en": "--AS I GROW TIRED OF YOUR EXCUSES.",
+        "ptbr": "-À medida que me canso de suas desculpas.",
+        "ptbrpp": "-À medida que me canso de suas desculpas."
+    }
+]

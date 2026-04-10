@@ -1,0 +1,74 @@
+[
+    {
+        "x1": 76,
+        "y1": 76,
+        "x2": 582,
+        "y2": 179,
+        "en": "The MID RIM.",
+        "ptbr": "A BORDA MÉDIA.",
+        "ptbrpp": "A BORDA MÉDIA."
+    },
+    {
+        "x1": 1258,
+        "y1": 958,
+        "x2": 1485,
+        "y2": 1122,
+        "en": "YOUR ARMOR, LORD VADER. HOW DO YOU FIND IT?",
+        "ptbr": "SUA ARMADURA, SENHOR VADER. COMO VOCÊ ENCONTRA ISSO?",
+        "ptbrpp": "SUA ARMADURA, SENHOR VADER. COMO VOCÊ ENCONTRA ISSO?"
+    },
+    {
+        "x1": 392,
+        "y1": 1488,
+        "x2": 504,
+        "y2": 1539,
+        "en": "IT IS...",
+        "ptbr": "ISSO É...",
+        "ptbrpp": "ISSO É..."
+    },
+    {
+        "x1": 616,
+        "y1": 1728,
+        "x2": 839,
+        "y2": 1778,
+        "en": "...ACCEPTABLE.",
+        "ptbr": "...ACEITÁVEL.",
+        "ptbrpp": "...ACEITÁVEL."
+    },
+    {
+        "x1": 224,
+        "y1": 2081,
+        "x2": 427,
+        "y2": 2188,
+        "en": "WHY HAVE WE COME HERE, MY MASTER?",
+        "ptbr": "POR QUE VIMOS AQUI, MEU MESTRE?",
+        "ptbrpp": "POR QUE VIMOS AQUI, MEU MESTRE?"
+    },
+    {
+        "x1": 940,
+        "y1": 2077,
+        "x2": 1321,
+        "y2": 2251,
+        "en": "I NEED YOUR HELP, LORD VADER. I HAVE VERY HIGH HOPES FOR WHAT WE MIGHT ACHIEVE TOGETHER.",
+        "ptbr": "PRECISO DA SUA AJUDA, SENHOR VADER. TENHO ALTAS ESPERANÇAS NO QUE PODEMOS ALCANÇAR JUNTOS.",
+        "ptbrpp": "PRECISO DA SUA AJUDA, SENHOR VADER. TENHO ALTAS ESPERANÇAS NO QUE PODEMOS ALCANÇAR JUNTOS."
+    },
+    {
+        "x1": 1324,
+        "y1": 2123,
+        "x2": 1454,
+        "y2": 2212,
+        "en": "BUT FIRST...",
+        "ptbr": "MAS PRIMEIRO...",
+        "ptbrpp": "MAS PRIMEIRO..."
+    },
+    {
+        "x1": 1488,
+        "y1": 2626,
+        "x2": 1766,
+        "y2": 2740,
+        "en": "...YOU WILL NEED YOUR LIGHTSABER.",
+        "ptbr": "...VOCÊ PRECISARÁ DO SEU SABRE DE LUZ.",
+        "ptbrpp": "...VOCÊ PRECISARÁ DO SEU SABRE DE LUZ."
+    }
+]
