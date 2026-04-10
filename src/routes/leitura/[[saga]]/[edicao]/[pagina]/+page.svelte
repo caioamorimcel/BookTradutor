@@ -27,6 +27,7 @@
 	import { funcaoTeclas } from './funcaoTeclas.js';
 	import PalavraPorPalavra from './PalavraPorPalavra.svelte';
 	import SelecaoDeVoz from './SelecaoDeVoz.svelte';
+	import Sidebar from './Sidebar.svelte';
 	import TextToSpeech from './TextToSpeech.svelte';
 
 	let elementoImagem = $state<HTMLImageElement>();
@@ -77,48 +78,73 @@
 
 <svelte:window onkeydown={funcaoTeclas} />
 
-<div class="mt-2 mb-2 flex items-center justify-center gap-3">
+<div class="mx-3 flex items-center justify-between">
+	<!-- svelte-ignore a11y_consider_explicit_label -->
 	<button
-		class="classButton disabled:cursor-not-allowed disabled:opacity-50"
-		disabled={paginaAtual <= 1}
-		onclick={() =>
-			paginaAtual > 1 &&
-			goto(
-				resolve(
-					`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual - 1}?direction=previous`,
-				),
-			)}
-	>
-		VOLTAR
-	</button>
-
-	<select
-		value={paginaAtual}
-		onchange={(event) => {
-			const valorSelecionado = (event.currentTarget as HTMLSelectElement).value;
-			goto(resolve(`/leitura/${derivedSaga}${page.params.edicao}/${valorSelecionado}`));
+		class="classButton"
+		onclick={() => {
+			goto(resolve(`/flix/${derivedSaga}`));
 		}}
-		class="max-w-20 rounded border p-2"
 	>
-		<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars-->
-		{#each Array.from({ length: totalDePaginas.value }) as _, p (p)}
-			<option value={p + 1}>{p + 1} / {totalDePaginas.value}</option>
-		{/each}
-	</select>
-
-	<button
-		class="classButton disabled:cursor-not-allowed disabled:opacity-50"
-		disabled={paginaAtual >= totalDePaginas.value}
-		onclick={() =>
-			paginaAtual < totalDePaginas.value &&
-			goto(
-				resolve(`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual + 1}?direction=next`),
-			)}
-	>
-		AVANÇAR
+		<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 16 9"
+			><path
+				fill="currentColor"
+				d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5"
+			/><path
+				fill="currentColor"
+				d="M6 8.5a.47.47 0 0 1-.35-.15l-3.5-3.5c-.2-.2-.2-.51 0-.71L5.65.65c.2-.2.51-.2.71 0s.2.51 0 .71L3.21 4.51l3.15 3.15c.2.2.2.51 0 .71c-.1.1-.23.15-.35.15Z"
+			/></svg
+		>
 	</button>
-</div>
+	<div class="mt-2 mb-2 flex items-center justify-center gap-3">
+		<button
+			class="classButton disabled:cursor-not-allowed disabled:opacity-50"
+			disabled={paginaAtual <= 1}
+			onclick={() => {
+				if (paginaAtual > 1) {
+					goto(
+						resolve(
+							`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual - 1}?direction=previous`,
+						),
+					);
+				}
+			}}
+		>
+			VOLTAR
+		</button>
 
+		<select
+			value={paginaAtual}
+			onchange={(event) => {
+				const valorSelecionado = (event.currentTarget as HTMLSelectElement).value;
+				goto(resolve(`/leitura/${derivedSaga}${page.params.edicao}/${valorSelecionado}`));
+			}}
+			class="max-w-20 rounded border p-2"
+		>
+			<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars-->
+			{#each Array.from({ length: totalDePaginas.value }) as _, p (p)}
+				<option value={p + 1}>{p + 1} / {totalDePaginas.value}</option>
+			{/each}
+		</select>
+
+		<button
+			class="classButton disabled:cursor-not-allowed disabled:opacity-50"
+			disabled={paginaAtual >= totalDePaginas.value}
+			onclick={() => {
+				if (paginaAtual < totalDePaginas.value) {
+					goto(
+						resolve(
+							`/leitura/${derivedSaga}${page.params.edicao}/${paginaAtual + 1}?direction=next`,
+						),
+					);
+				}
+			}}
+		>
+			AVANÇAR
+		</button>
+	</div>
+	<div><Sidebar bind:idioma={idioma.value} bind:voz={voz.value} /></div>
+</div>
 <div class="relative mx-auto w-full">
 	{#key page.url.pathname}
 		<img

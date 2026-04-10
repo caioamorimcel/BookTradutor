@@ -1,11 +1,12 @@
 import { type Balao } from '$lib/types/typeBalao';
+import { type typeIdioma } from '$lib/types/typeIdioma';
 
 export const fontSize = $state({ value: 14 });
 export const popupX = $state({ value: 0 });
 export const popupY = $state({ value: 0 });
 export const larguraOriginal = $state({ value: 0 });
 export const alturaOriginal = $state({ value: 0 });
-export const idioma = $state<{ value: 'ptbr' | 'en' }>({ value: 'ptbr' });
+export const idioma = $state<{ value: typeIdioma }>({ value: 'ptbr' });
 export const voz = $state({ value: '' });
 export const popupVisivel = $state({ value: false });
 export const arrayOriginal = $state<{ value: string[] }>({ value: [] });
