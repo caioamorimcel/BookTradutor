@@ -33,12 +33,12 @@
 					<!-- {@html Logo} -->
 				</a>
 			</div>
-			<div class="font-secondary text-gray font-bold text-red-600 select-none">HUB</div>
+			<div class="font-secondary text-gray font-bold text-red-600 select-none">COMICFLIX</div>
 		</div>
 
 		<div>
 			<button
-				class="text-gray hover:bg-light dark:hover:bg-opacity-10 inline-flex items-center rounded-full border border-transparent p-2 transition-all focus:ring-2 focus:outline-none {pesquisaVisivel.value &&
+				class="text-gray hover:bg-light dark:hover:bg-opacity-10 inline-flex cursor-pointer items-center rounded-full border border-transparent p-2 transition-all focus:ring-2 focus:outline-none {pesquisaVisivel.value &&
 					'ring-2 dark:text-white'}  ring-primary-light"
 				onclick={() => (pesquisaVisivel.value = true)}
 				><Icon src={MagnifyingGlass} class="w-5 text-gray-dark dark:text-gray-light" /></button

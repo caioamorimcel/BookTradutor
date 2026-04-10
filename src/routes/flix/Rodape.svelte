@@ -23,7 +23,7 @@
 			>
 		</div>
 		<div class="mt-8 flex text-gray-dark md:order-1 md:mt-0 dark:text-gray-light">
-			<p class="text-gray text-center text-sm">&copy; 2022 Movie HUB. All rights reserved.</p>
+			<p class="text-gray text-center text-sm">&copy; 2026 COMICFLIX HUB. All rights reserved.</p>
 		</div>
 	</div>
 </footer>
